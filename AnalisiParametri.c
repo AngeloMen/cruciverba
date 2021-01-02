@@ -48,7 +48,7 @@ static int parse_opt	(int key, char *arg
 				}
 		case 'f':{
 				if (!(LeggiSchema(arg))){
-					printf("File dello shema %s non trovato.\n",arg);
+					printf("File dello schema %s non trovato.\n",arg);
 					return 1;
 				}	
 				LettoSchema = TRUE;
