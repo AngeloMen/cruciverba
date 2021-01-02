@@ -7,7 +7,7 @@
 int LeggiSchema(char *NomeFile);
 
 const char *argp_program_bug_address = "someone@example.com";
-const char *argp_program_version = "version 1.1";
+const char *argp_program_version = "version 1.2";
 struct arguments
 {
 	char *argz;
