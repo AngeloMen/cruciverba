@@ -11,7 +11,10 @@ void	ScriviParola(struct definizione*);				//
 void	lettura(struct definizione *p);					//
 void	CaricaParola(struct definizione*, char*);		//
 int		ControllaParola(char, int, int, int, char*);	//
+int		ApriDatabase(void);								// Apertura del database
 int		ChiudiDatabase(void);							// Chiusura del database
+void	AccodaLista(struct definizione*);				//
+struct	definizione* ProssimaParola(void);				//
 //
 //
 /*  Chiede a terminale che parola inserire e controlla che quella
@@ -43,10 +46,10 @@ void LeggiDaTastiera(void) {
 		case 'c':
 			printf("\033[44;1Hcancella \033[K");
 			break;
-		case 'i':
-													/* DisegnaSchema(); */
+		case 'i': {
 			lettura(p);								/* Legge e controlla la parola    */
 			break;
+			}
 		case 'f':
 			break;
 		}
@@ -140,6 +143,9 @@ void lettura(struct definizione *p) {
 			*pc = parola[i];
 			++pc;
 		}
+		ApriDatabase();
+		p = ProssimaParola();
+		ChiudiDatabase();
 	}
 
 	return;

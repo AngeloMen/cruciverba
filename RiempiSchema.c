@@ -6,7 +6,7 @@
  * Prototipi delle funzioni 
  -------------------------------------------------------*/
 struct	definizione* ParolaPrecedente(void);			//
-struct	definizione* ProssimaParola(void);				//
+struct	definizione* ProssimaParola(struct definizione*);				//
 int		TrovaParola(struct definizione*);				//
 int		TrovaParola_1(struct definizione*);				//
 int		TrovaParola_2(struct definizione*);				//
@@ -15,6 +15,7 @@ int		piene(struct definizione*);						//
 void	AccodaLista(struct definizione*);				//
 void	CancellaParola(struct definizione*);			//
 void	ScriviParola(struct definizione*);				//
+int		SiIncrociano(struct definizione*, struct definizione*);
 
 /*-----------------------------------------------------------------*/
 /*             Inizio della funzione                               */
@@ -26,7 +27,7 @@ int RiempiSchema(void) {
 	while (1) {
 		if (TrovaParola(p)) {							// Cerca la parola e se trovata
 			p->trovata = TRUE;
-			p = ProssimaParola();						// si posiziona alla successiva
+			p = ProssimaParola(p);						// si posiziona alla successiva
 			if (p == NULL)								// se finita lista parole
 				return 1;								//    schema risolto
 		} else {
@@ -44,7 +45,7 @@ int RiempiSchema(void) {
 /*           Ritorna l'indirizzo della parola da cercare          */
 /*           e costruisce una lista delle parole cercate          */
 /*----------------------------------------------------------------*/
-struct definizione* ProssimaParola(void) {
+struct definizione* ProssimaParola(struct definizione *prec) {
 	struct	definizione *p, *prossima;
 	int		ctrprec = INT_MAX, lunprec = 0, ctrn;
 
@@ -58,6 +59,14 @@ struct definizione* ProssimaParola(void) {
 		if (piene(p) == 0)
 			continue;
 
+		if (SiIncrociano(p, prec)) {
+			ctrn = CercaParole(p, TRUE);
+			prossima	=	p;
+			ctrprec 	=	ctrn;
+			lunprec		=	p->lunghezza;
+			break;
+		}
+			
 		ctrn = CercaParole(p, TRUE);
 		if (ctrn < ctrprec){
 			prossima	=	p;
