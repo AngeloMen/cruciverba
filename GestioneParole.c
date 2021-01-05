@@ -129,7 +129,7 @@ void stampaparola(struct definizione *p) {
 	}
 	i = p->lunghezza;
 	parola[i] = '\0';
-  	printf("Parola: %c, riga= %i, colonna=%i: %s             \n", p->OrVe, p->riga+1, p->colonna+1, parola);
+  	printf("Parola: %c, riga= %2i, colonna=%2i: %s             \n", p->OrVe, p->riga+1, p->colonna+1, parola);
 	return;
 }
 /*-----------------------------------------------------------*/
