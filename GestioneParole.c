@@ -163,7 +163,7 @@ void PremiTasto(int riga, int colonna) {
 /* stampa la parola attiva della definizione                 */
 /*															 */
 /*-----------------------------------------------------------*/
-void stamparicerca(struct definizione *p, int cancella) {
+void stamparicerca_old(struct definizione *p, int cancella) {
 	int riga, colonna;
 
 	riga	= ctrdef;
@@ -186,6 +186,38 @@ void stamparicerca(struct definizione *p, int cancella) {
 		
 		char *j = p->parole + p->lunghezza * (p->i - 1);
 		printf("%2i %c, Parola %2i di %5i %.*s",  p->numero, p->OrVe, p->i, p->ctr, p->lunghezza, j);
+	}
+
+//	sleep(1);
+	
+	return;
+}
+void stamparicerca(struct definizione *p, int cancella) {
+	int riga, colonna;
+	char parola[40];
+
+	int righe  = maxr * 2;
+	riga	= ((ctrdef)%(righe))+2;
+	colonna	= maxc*4+(ctrdef/(righe))*35+10;
+
+	/*
+	if ((ctrdef>40) && (ctrdef<=80)){
+		colonna = maxc*4+45;
+		riga	= ctrdef - 40;
+	}
+	else
+		if (ctrdef>80){
+			colonna = maxc*4+80;
+			riga	= ctrdef - 80;
+		}
+	*/
+	gotoxy(colonna, riga);
+	if (cancella) {
+		printf("%35s", " ");
+	} else {
+		sprintf(parola, "(%i/%i)", p->i, p->ctr);	
+		char *j = p->parole + p->lunghezza * (p->i - 1);
+		printf("%2i %c, %*s \t%.*s",  p->numero, p->OrVe, 10,  parola,  p->lunghezza, j);
 	}
 
 //	sleep(1);
