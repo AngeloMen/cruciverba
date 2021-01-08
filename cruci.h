@@ -11,6 +11,10 @@
 #define DBSERVER "dbserver"
 #define DBUSER "guest"
 #define DBPWD ""
+// Per posizionare il cursore
+
+#define clear() printf("\033[H\033[J")
+#define gotoxy(x,y) printf("\033[%d;%dH", (y), (x))
 
 /*-----------------------------------------------------------------------*/
 /*                     Variabili globali                                 */
@@ -38,6 +42,7 @@ extern int difficolta;			// Massimo livello di difficoltà per le parole da usar
 extern int contatore;			// Contatore delle ricerche
 extern int totaleVerticali;     // Totale definizioni verticali
 extern int totaleOrizzontali;   // Totale definizioni orizzontali
+extern int ctrdef;			    // 
 
 extern struct definizione {
 	char OrVe;                       // "O"=Orizzontale, "V"=Verticale

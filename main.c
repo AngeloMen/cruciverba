@@ -22,6 +22,7 @@ int		ApriDatabase(void);								// Apertura del database
 int		RiempiSchema(void);								// Riempie lo schema
 int		ChiudiDatabase(void);							// Chiusura del database
 void	StampaSoluzioni(void);							//
+void	PremiTasto(int, int);
 
 /*-----------------------------------------------------------------------*/
 /*                     variabili globali                                 */
@@ -33,6 +34,7 @@ int		maxr, maxc;			/* Dimensioni dello schema (righe, colonne) */
 int		contatore = 0;
 int		totaleVerticali = 0;
 int		totaleOrizzontali = 0;
+int		ctrdef = 1;
 
 struct	passante{                   // punta alla verticale e orizzontale
 	struct definizione *vert;       // che passano per la casella dello
@@ -116,6 +118,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	if (RiempiSchema()) {						// Ciclo di riempimento dello schema;
+		PremiTasto(50, 1);
 		DisegnaSchema();
 	} else {
 		puts("\033[24;1HSchema irrisolto\033[K");

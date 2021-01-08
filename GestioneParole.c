@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "cruci.h"
-//#include "crucifun.h"  
-/*  Chiede a terminale che parola inserire e controlla che quella
- *  digitata sia corretta per lunghezza e incroci con quelle già
- *  esistenti. Permette la cancellazione delle parole già inserite  */
+void	stamparicerca(struct definizione *p, int cancella);
 
 /*-----------------------------------------------------------------*/
 /*         Scrive la parola richiesta prendendola dallo schema     */
@@ -45,6 +43,7 @@ void ScriviParola(struct definizione *p) {
 	}
 
 	puts("\033[24;1H");
+	stamparicerca(p, FALSE);
 	return;
 }
 /*-----------------------------------------------------------------*/
@@ -150,11 +149,46 @@ void stampaparola_i(struct definizione *p, int i) {
   	printf("Parola: %c, riga= %i, colonna=%i: %s             \n", p->OrVe, p->riga+1, p->colonna+1, parola);
 	return;
 }
-void PremiTasto() {
+void PremiTasto(int riga, int colonna) {
 	char risp;
+		
+	gotoxy(colonna, riga);
+	printf("\n");
+	printf("premi un tasto per proseguire\n");
+	scanf("%c", &risp);
+	scanf("%c", &risp);
 
-		printf("\n");
-		printf("premi un tasto per proseguire\n");
-		scanf("%c", &risp);
+}
+/*-----------------------------------------------------------*/
+/* stampa la parola attiva della definizione                 */
+/*															 */
+/*-----------------------------------------------------------*/
+void stamparicerca(struct definizione *p, int cancella) {
+	int riga, colonna;
 
+	riga	= ctrdef;
+	colonna	= maxc*4+5;
+
+	if ((ctrdef>40) && (ctrdef<=80)){
+		colonna = maxc*4+45;
+		riga	= ctrdef - 40;
+	}
+	else
+		if (ctrdef>80){
+			colonna = maxc*4+80;
+			riga	= ctrdef - 80;
+		}
+
+	gotoxy(colonna, riga);
+	if (cancella) {
+		printf("%40s", " ");
+	} else {
+		
+		char *j = p->parole + p->lunghezza * (p->i - 1);
+		printf("%2i %c, Parola %2i di %5i %.*s",  p->numero, p->OrVe, p->i, p->ctr, p->lunghezza, j);
+	}
+
+//	sleep(1);
+	
+	return;
 }

@@ -28,6 +28,7 @@ void	cancella_da_stringa(struct definizione *P
 void	taglia (char*, int, int);
 void	elimina_parola (char*, int);
 void	comprimi_stringa(char *);
+void	stamparicerca(struct definizione *p, int cancella);
 
 /*-------------------------------------------------*/
 /*  ricerca la parola                              */
@@ -68,8 +69,9 @@ int TrovaParola_1(struct definizione *p) {
 	while ((usata(p))					// Verifica che la parola non sia già in uso
        || (bloccante(p))){				// e che non blocchi su quelle che incrocia
 		++(p->i);
-		if (p->i > p->ctr)
+		if (p->i > p->ctr){
 			return FALSE;
+		}
 	}
 
 	p->trovata = TRUE;
