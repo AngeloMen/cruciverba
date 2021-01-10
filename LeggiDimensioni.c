@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "cruci.h"
-//#include "crucifun.h"  
+#include "cruciverba.h"
+#include "funzioni.h"
 /*-------------------------------------------------------------------------*/
 /*  Legge le dimenzioni dello schema                                       */
 /*-------------------------------------------------------------------------*/

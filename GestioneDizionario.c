@@ -141,7 +141,6 @@ int usata(struct definizione *p) {
 		pl = pl->succ;
 	}
 
-	
 	return FALSE;
 
 }

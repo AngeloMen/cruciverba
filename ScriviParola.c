@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "cruci.h"
-//#include "crucifun.h"  
+#include "cruciverba.h"
 /*  Chiede a terminale che parola inserire e controlla che quella
  *  digitata sia corretta per lunghezza e incroci con quelle già
  *  esistenti. Permette la cancellazione delle parole già inserite  */

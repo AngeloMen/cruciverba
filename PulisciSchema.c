@@ -2,7 +2,8 @@
 /* lo schema e le sue dimensioni sono variabili globali */
 
 #include <stdio.h>
-#include "cruci.h"
+#include "cruciverba.h"
+#include "funzioni.h"
 //extern char	schema[MaxR][MaxC];	/* Schema     */
 //extern int	ctrsch[MaxR][MaxC];	/* Schema     */
 //extern int	maxr, maxc;			/* dimensioni */

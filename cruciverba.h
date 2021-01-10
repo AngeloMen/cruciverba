@@ -7,6 +7,7 @@
 #define Maxl  40    /* Massimo lubghezza di una parola      */
 #define DEBUG FALSE
 #define NERA 'X'
+#define	RIGA 45											// Posizione della riga delle richieste
 // Per accesso al db		
 #define DBSERVER "dbserver"
 #define DBUSER "guest"
@@ -43,6 +44,7 @@ extern int contatore;			// Contatore delle ricerche
 extern int totaleVerticali;     // Totale definizioni verticali
 extern int totaleOrizzontali;   // Totale definizioni orizzontali
 extern int ctrdef;			    // 
+extern int DbStatus;			//
 
 extern struct definizione {
 	char OrVe;                       // "O"=Orizzontale, "V"=Verticale

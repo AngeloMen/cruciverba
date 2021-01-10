@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "cruci.h"
-#define	RIGA 45											// Posizione della riga delle richieste
+#include "cruciverba.h"
+#include "funzioni.h"
 /*-----------------------------------------------------------------*/
 /*             Prototipi delle funzioni                            */
 /*-----------------------------------------------------------------*/
@@ -10,9 +10,6 @@ void	evidenzia(struct definizione*);					//
 void	ScriviParola(struct definizione*);				//
 void	lettura(struct definizione *p);					//
 void	CaricaParola(struct definizione*, char*);		//
-int		ControllaParola(char, int, int, int, char*);	//
-int		ApriDatabase(void);								// Apertura del database
-int		ChiudiDatabase(void);							// Chiusura del database
 void	AccodaLista(struct definizione*);				//
 struct	definizione* ProssimaParola(void);				//
 //

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "cruci.h"
+#include "cruciverba.h"
 int system(const char *command);
 
 /*------------------------------------------

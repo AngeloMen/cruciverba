@@ -1,11 +1,10 @@
 #include <stdio.h>
-#include "cruci.h"
+#include "cruciverba.h"
+#include "funzioni.h"
 /*
  * legge da tastiera le coordinate di una casella e se c'è una "X"
  * la sostituisce con uno spazio, viceversa se c'è uno spazio lo
  * sostituisce con una 'X' (che tristemente sta per casella nera)   */
-
-void ScriviCasella(int, int);
 
 void MettiCaselleNere() {
 	int x = 1, y = 1;

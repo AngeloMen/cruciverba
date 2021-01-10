@@ -1,13 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "cruci.h"
+#include "cruciverba.h"
+#include "funzioni.h"
 
-int InizioOriz(int, int);
-int InizioVert(int, int);
-int CalcolaLungVert(int, int);
-int CalcolaLungOriz(int, int);
-
-void AggiungiDefinizione(char, int, int);
 /*-----------------------------------------------------------------*/
 /*             Inizio della funzione                               */
 /*-----------------------------------------------------------------*/

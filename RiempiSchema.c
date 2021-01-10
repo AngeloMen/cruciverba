@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-#include "cruci.h"
+#include "cruciverba.h"
+#include "funzioni.h"
 /* -------------------------------------------------------
  * Prototipi delle funzioni 
  -------------------------------------------------------*/

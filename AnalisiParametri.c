@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <argz.h>
 #include <argp.h>
-#include "cruci.h"
+#include "cruciverba.h"
+#include "funzioni.h"
 
-int LeggiSchema(char *NomeFile);
 
 const char *argp_program_bug_address = "someone@example.com";
 const char *argp_program_version = "version 1.2";
