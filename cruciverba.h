@@ -1,5 +1,5 @@
-#ifndef CRUCI
-#define CRUCI
+#ifndef CRUCIVERBA
+#define CRUCIVERBA
 #define FALSE  0
 #define TRUE   1
 #define MaxR  20    /* Massimo numero di righe ammesso      */
@@ -72,4 +72,18 @@ extern struct listaricerca {
 
 extern struct listaricerca *prima;
 extern struct listaricerca *ultima;
+extern const char *argp_program_version;
+/*
+ * Test globali
+ */
+char	schema[MaxR][MaxC];
+int		ctrsch[MaxR][MaxC];
+int		maxr, maxc;
+struct definizione definizione;
+struct definizione *inizio;        // Indirizzo della prima definizione
+struct definizione *fine;          // Indirizzo dell'ultima definizione
+struct definizione *p;             // 
+struct listaricerca dacercare;
+struct listaricerca *prima;
+struct listaricerca *ultima;
 #endif

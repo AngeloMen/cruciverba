@@ -184,6 +184,8 @@ void DisegnaSchema() {
 
 		DisegnaRiga();									/* riga di separazione     */
 	}
+	gotoxy(1, maxr*2+4);
+	printf("%s", argp_program_version);
 	printf("\n\n\n");
 	return;
 }

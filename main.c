@@ -2,31 +2,16 @@
 #include <stdio.h>
 #include <cups/cups.h>
 #include "cruciverba.h"
-/*-----------------------------------------------------------------------*/
-/*                     prototipi delle funzioni                          */
-/*-----------------------------------------------------------------------*/
-int		AnalisiParametri(int, char*[]);					// Analizza i parametri di lancio
-void	LeggiDimensioni(void);							// Legge le dimensioni
-void	DisegnaSchema(void);							//
-void	PulisciSchema(void);							// Inizializza lo schema a spazi
-void	MettiCaselleNere(void);							// mette le caselle nere
-void	StampaDefinizioni(void);						// Stampa le definizioni trovate
-void	Definizioni(void);								// Ricerca le coordinate di inizio
-void	LeggiDaTastiera(void);							// Legge le prime parole da tastiera
-void	SalvaSchema(void);								// salva lo schema se richiesto
-int		ApriDatabase(void);								// Apertura del database
-int		RiempiSchema(void);								// Riempie lo schema
-int		ChiudiDatabase(void);							// Chiusura del database
-void	StampaSoluzioni(void);							//
-void	PremiTasto(int, int);
+#include "funzioni.h"
 
 /*-----------------------------------------------------------------------*/
 /*                     variabili globali                                 */
 /*-----------------------------------------------------------------------*/
-char	schema[MaxR][MaxC];	/* Matrice che contiene lo schema           */
-int		ctrsch[MaxR][MaxC]; /* Serve a controllare la cancellazione     */
+
+//char	schema[MaxR][MaxC];	/* Matrice che contiene lo schema           */
+//int		ctrsch[MaxR][MaxC]; /* Serve a controllare la cancellazione     */
 							/* delle singole lettere.                   */
-int		maxr, maxc;			/* Dimensioni dello schema (righe, colonne) */
+//int		maxr, maxc;			/* Dimensioni dello schema (righe, colonne) */
 int		contatore = 0;
 int		totaleVerticali = 0;
 int		totaleOrizzontali = 0;
@@ -35,7 +20,6 @@ enum	DATABASE_STATUS{Open, Closed, Invalid};
 
 struct passante passante;
 struct passante casella[MaxR][MaxC];
-
 /*-----------------------------------------------------------------------*/
 /*                parametri ricevuti da linea comando                    */
 /*-----------------------------------------------------------------------*/
@@ -47,14 +31,13 @@ int minl;                   // La lunghezza minima della parola da cercare
 int nonRandom = FALSE;		// Ricerca in ordine alfabetico o casuale
 int nonValide;				// Includi anche le parole marcate nel db come non valide
 
-struct definizione definizione;
-struct definizione *inizio;        // Indirizzo della prima definizione
-struct definizione *fine;          // Indirizzo dell'ultima definizione
-struct definizione *p;             // 
-struct listaricerca dacercare;
-struct listaricerca *prima;
-struct listaricerca *ultima;
-
+//struct definizione definizione;
+//struct definizione *inizio;        // Indirizzo della prima definizione
+//struct definizione *fine;          // Indirizzo dell'ultima definizione
+//struct definizione *p;             // 
+//struct listaricerca dacercare;
+//struct listaricerca *prima;
+//struct listaricerca *ultima;
 /*-----------------------------------------------------------------------*/
 /*                     Programma principale                              */
 /*-----------------------------------------------------------------------*/

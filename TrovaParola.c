@@ -28,7 +28,7 @@ void	cancella_da_stringa(struct definizione *P
 void	taglia (char*, int, int);
 void	elimina_parola (char*, int);
 void	comprimi_stringa(char *);
-void	stamparicerca(struct definizione *p, int cancella);
+//void	stamparicerca(struct definizione *p, int cancella);
 
 /*-------------------------------------------------*/
 /*  ricerca la parola                              */

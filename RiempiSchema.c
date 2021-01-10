@@ -3,22 +3,6 @@
 #include <limits.h>
 #include "cruciverba.h"
 #include "funzioni.h"
-/* -------------------------------------------------------
- * Prototipi delle funzioni 
- -------------------------------------------------------*/
-struct	definizione* ParolaPrecedente(void);			//
-struct	definizione* ProssimaParola(struct definizione*);				//
-int		TrovaParola(struct definizione*);				//
-int		TrovaParola_1(struct definizione*);				//
-int		TrovaParola_2(struct definizione*);				//
-int		CercaParole(struct definizione*, int);			//
-int		piene(struct definizione*);						//
-void	AccodaLista(struct definizione*);				//
-void	CancellaParola(struct definizione*);			//
-void	ScriviParola(struct definizione*);				//
-int		SiIncrociano(struct definizione*, struct definizione*);
-void	stamparicerca(struct definizione *p, int cancella);
-
 /*-----------------------------------------------------------------*/
 /*             Inizio della funzione                               */
 /*-----------------------------------------------------------------*/

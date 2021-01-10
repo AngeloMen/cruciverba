@@ -1,27 +1,49 @@
-/*-----------------------------------------------------------------------*/
-/*                     prototipi delle funzioni                          */
-/*-----------------------------------------------------------------------*/
+#ifndef FUNZIONI
+#define FUNZIONI
+#include "cruciverba.h"
 int		AnalisiParametri(int, char*[]);					// Analizza i parametri di lancio
-void	LeggiDimensioni(void);							// Legge le dimensioni
-void	DisegnaSchema(void);							//
-void	PulisciSchema(void);							// Inizializza lo schema a spazi
-void	MettiCaselleNere(void);							// mette le caselle nere
-void	StampaDefinizioni(void);						// Stampa le definizioni trovate
-void	Definizioni(void);								// Ricerca le coordinate di inizio
-void	LeggiDaTastiera(void);							// Legge le prime parole da tastiera
-void	SalvaSchema(void);								// salva lo schema se richiesto
 int		ApriDatabase(void);								// Apertura del database
+int		CalcolaLungOriz(int, int);
+int		CalcolaLungVert(int, int);
+int		ChiudiDatabase(void);							// Chiusura del database
+int		ControllaParola(char, int, int, int, char*);	//
+int		InizioOriz(int, int);
+int		InizioVert(int, int);
+int		LeggiSchema(char *NomeFile);
 int		RiempiSchema(void);								// Riempie lo schema
-int LeggiSchema(char *NomeFile);
-int		ChiudiDatabase(void);							// Chiusura del database
-void	StampaSoluzioni(void);							//
+void	AggiungiDefinizione(char, int, int);       // BColonna di inizio
+void	Definizioni(void);								// Ricerca le coordinate di inizio
+void	DisegnaSchema(void);							//
+void	LeggiDaTastiera(void);							// Legge le prime parole da tastiera
+void	LeggiDimensioni(void);							// Legge le dimensioni
+void	MettiCaselleNere(void);							// mette le caselle nere
 void	PremiTasto(int, int);
-int InizioOriz(int, int);
-int InizioVert(int, int);
-int CalcolaLungVert(int, int);
-int CalcolaLungOriz(int, int);
-void AggiungiDefinizione(char, int, int);       // BColonna di inizio
-int	ControllaParola(char, int, int, int, char*);	//
-int		ApriDatabase(void);								// Apertura del database
-int		ChiudiDatabase(void);							// Chiusura del database
-void ScriviCasella(int, int);
+void	PulisciSchema(void);							// Inizializza lo schema a spazi
+void	SalvaSchema(void);								// salva lo schema se richiesto
+void	ScriviCasella(int, int);
+void	StampaDefinizioni(void);						// Stampa le definizioni trovate
+void	StampaSoluzioni(void);							//
+void	stamparicerca(struct definizione *definizione, int);
+struct	definizione* ParolaPrecedente(void);			//
+struct	definizione* ProssimaParola(struct definizione*);				//
+int		TrovaParola(struct definizione*);				//
+int		TrovaParola_1(struct definizione*);				//
+int		TrovaParola_2(struct definizione*);				//
+void	AccodaLista(struct definizione*);
+void	CancellaParola(struct definizione*);
+int		piene(struct definizione*);
+void	ScriviParola(struct definizione*);
+int		SiIncrociano(struct definizione*, struct definizione*);
+int		SiIncrociano(struct definizione*, struct definizione*);
+int		CercaParole(struct definizione*, int);
+int		CercaParole(struct definizione*, int);			//
+void	evidenzia(struct definizione*);					//
+void	lettura(struct definizione *p);					//
+void	CaricaParola(struct definizione*, char*);		//
+int		usata(struct definizione*);
+int		bloccante(struct definizione*);
+void	cancella_bloccanti(struct definizione*, struct definizione *pd);
+void	cancella_da_stringa(struct definizione*, char, int);
+void	elimina_parola(char*, int);
+void	comprimi_stringa(char*);
+#endif

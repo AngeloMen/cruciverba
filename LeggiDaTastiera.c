@@ -3,15 +3,7 @@
 #include <string.h>
 #include "cruciverba.h"
 #include "funzioni.h"
-/*-----------------------------------------------------------------*/
-/*             Prototipi delle funzioni                            */
-/*-----------------------------------------------------------------*/
-void	evidenzia(struct definizione*);					//
-void	ScriviParola(struct definizione*);				//
-void	lettura(struct definizione *p);					//
-void	CaricaParola(struct definizione*, char*);		//
-void	AccodaLista(struct definizione*);				//
-struct	definizione* ProssimaParola(void);				//
+//struct	definizione* ProssimaParola(void);				//
 //
 //
 /*  Chiede a terminale che parola inserire e controlla che quella
@@ -141,7 +133,7 @@ void lettura(struct definizione *p) {
 			++pc;
 		}
 		ApriDatabase();
-		p = ProssimaParola();
+		p = ProssimaParola(p);
 		ChiudiDatabase();
 	}
 

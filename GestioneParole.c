@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include "cruciverba.h"
 #include "funzioni.h"
-void	stamparicerca(struct definizione *p, int cancella);
+//void	stamparicerca(struct definizione *p, int cancella);
 /*-----------------------------------------------------------------*/
 /*         Scrive la parola richiesta prendendola dallo schema     */
 /*-----------------------------------------------------------------*/

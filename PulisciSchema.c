@@ -4,9 +4,6 @@
 #include <stdio.h>
 #include "cruciverba.h"
 #include "funzioni.h"
-//extern char	schema[MaxR][MaxC];	/* Schema     */
-//extern int	ctrsch[MaxR][MaxC];	/* Schema     */
-//extern int	maxr, maxc;			/* dimensioni */
 
 void PulisciSchema() {
 

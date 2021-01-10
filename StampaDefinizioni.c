@@ -58,8 +58,8 @@ void StampaDefinizioni(void) {
 void StampaSoluzioni(void) {
 	char risp;
 	struct definizione *p;
-	int r;
-	int c;
+  	int r;
+  	int c;
 
 
 	printf("Stampo le soluzioni?(s=si, n=no)?\n");
