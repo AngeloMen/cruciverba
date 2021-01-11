@@ -33,6 +33,7 @@ extern struct passante{                   // punta alla verticale e orizzontale
 	struct definizione *vert;       // che passano per la casella dello
 	struct definizione *oriz;       
 } passante;
+extern struct passante passante;
 extern struct passante casella[MaxR][MaxC];
 
 extern int maxr, maxc;			// Dimensioni dello schema (righe, colonne)
@@ -44,7 +45,6 @@ extern int contatore;			// Contatore delle ricerche
 extern int totaleVerticali;     // Totale definizioni verticali
 extern int totaleOrizzontali;   // Totale definizioni orizzontali
 extern int ctrdef;			    // 
-extern int DbStatus;			//
 
 extern struct definizione {
 	char OrVe;                       // "O"=Orizzontale, "V"=Verticale
@@ -86,4 +86,8 @@ struct definizione *p;             //
 struct listaricerca dacercare;
 struct listaricerca *prima;
 struct listaricerca *ultima;
+struct passante casella[MaxR][MaxC];
+enum   DB_STATUS {Open, Closed, Invalid};
+enum   DB_STATUS Db_status;
+extern enum DB_STATUS Db_status;
 #endif

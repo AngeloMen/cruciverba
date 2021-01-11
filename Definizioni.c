@@ -11,8 +11,8 @@ void Definizioni(void) {
 
 	for (r = 0; r < maxr; r++) {
 		for (c = 0; c < maxc; c++) {
-			casella[r][c].vert = NULL;
-			casella[r][c].oriz = NULL;
+			casella[r][c].vert = NULL; 
+			casella[r][c].oriz = NULL; 
 		}
 	}		
 	for (r = 0; r < maxr; r++) {

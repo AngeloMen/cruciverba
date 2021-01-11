@@ -16,10 +16,7 @@ int		contatore = 0;
 int		totaleVerticali = 0;
 int		totaleOrizzontali = 0;
 int		ctrdef = 1;
-enum	DATABASE_STATUS{Open, Closed, Invalid};
 
-struct passante passante;
-struct passante casella[MaxR][MaxC];
 /*-----------------------------------------------------------------------*/
 /*                parametri ricevuti da linea comando                    */
 /*-----------------------------------------------------------------------*/

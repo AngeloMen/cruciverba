@@ -1,20 +1,18 @@
-/* Questa funzione riempie di spazi lo schema           */
-/* lo schema e le sue dimensioni sono variabili globali */
-
 #include <stdio.h>
 #include "cruciverba.h"
 #include "funzioni.h"
+extern struct passante casella[MaxR][MaxC];
 
 void PulisciSchema() {
 
-	int r, c;
+	int riga, colonna;
 
-	for (r = 0; r < maxr; r++)
-		for (c = 0; c < maxc; c++) {
-			schema[r][c] = ' ';
-			ctrsch[r][c] = 0;
-			casella[r][c].vert = NULL;
-			casella[r][c].oriz = NULL;
+	for (riga = 0; riga < maxr; riga++)
+		for (colonna = 0; colonna < maxc; colonna++) {
+			schema[riga][colonna] = ' ';
+			ctrsch[riga][colonna] = 0;
+			casella[riga][colonna].vert = NULL;
+			casella[riga][colonna].oriz = NULL;
 		}
 
 	return;

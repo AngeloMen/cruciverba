@@ -6,28 +6,29 @@
 #include <ctype.h>
 #include <time.h>
 #include "cruciverba.h"
+#include "funzioni.h"
 MYSQL mysql;
 
 /*--------------------------------------------------------------------*/
 /* Prototipi delle funzioni                                           */
 /*--------------------------------------------------------------------*/
-int		CercaParole(struct definizione*, int);			//
-int		usata(struct definizione*);						//
-int		bloccante(struct definizione*);					//
-void	CaricaParola(struct definizione*, char*);		//
-void	ScriviParola(struct definizione*);				//
-int		TrovaParola_1(struct definizione*);				//
-int		TrovaParola_2(struct definizione*);				//
-int		SiIncrociano(struct definizione *p				//
-				    ,struct definizione *pd);			//
-void	CancellaParola(struct definizione*);			//
-void	cancella_bloccanti(struct definizione *p        //
-		                  ,struct definizione *pd);		//
-void	cancella_da_stringa(struct definizione *P
-						   ,char,  int);
-void	taglia (char*, int, int);
-void	elimina_parola (char*, int);
-void	comprimi_stringa(char *);
+//int		CercaParole(struct definizione*, int);			//
+//int		usata(struct definizione*);						//
+//int		bloccante(struct definizione*);					//
+//void	CaricaParola(struct definizione*, char*);		//
+//void	ScriviParola(struct definizione*);				//
+//int		TrovaParola_1(struct definizione*);				//
+//int		TrovaParola_2(struct definizione*);				//
+//int		SiIncrociano(struct definizione *p				//
+				    //,struct definizione *pd);			//
+//void	CancellaParola(struct definizione*);			//
+//void	cancella_bloccanti(struct definizione *p        //
+		                  //,struct definizione *pd);		//
+//void	cancella_da_stringa(struct definizione *P
+						   //,char,  int);
+//void	taglia (char*, int, int);
+//void	elimina_parola (char*, int);
+//void	comprimi_stringa(char *);
 //void	stamparicerca(struct definizione *p, int cancella);
 
 /*-------------------------------------------------*/
@@ -161,8 +162,9 @@ int ApriDatabase() {
 		fprintf(stderr, "errore di connessione al server: %s\n",
 				mysql_error(&mysql));
 		return 0;
+		Db_status = Invalid;
 	}
-
+	Db_status = Open;
 	return 1;
 }
 /* -----------------------------------  */
@@ -170,6 +172,7 @@ int ApriDatabase() {
 /* -----------------------------------  */
 int ChiudiDatabase() {
 	mysql_close(&mysql);     // Chiusura del database
+	Db_status = Closed;
 	return 1;
 }
 
