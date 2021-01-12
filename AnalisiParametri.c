@@ -5,9 +5,8 @@
 #include "cruciverba.h"
 #include "funzioni.h"
 
-
 const char *argp_program_bug_address = "someone@example.com";
-const char *argp_program_version = "version 0.0";
+const char *argp_program_version = "version 1.3";
 struct arguments
 {
 	char *argz;
