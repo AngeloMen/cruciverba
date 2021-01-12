@@ -12,11 +12,13 @@
 //int		ctrsch[MaxR][MaxC]; /* Serve a controllare la cancellazione     */
 							/* delle singole lettere.                   */
 //int		maxr, maxc;			/* Dimensioni dello schema (righe, colonne) */
-int		contatore = 0;
-int		totaleVerticali = 0;
-int		totaleOrizzontali = 0;
-int		ctrdef = 1;
+int	contatore			= 0;
+int	totaleVerticali		= 0;
+int	totaleOrizzontali	= 0;
+int	ctrdef				= 1;
 
+struct definizione *inizio	= NULL;			// Indirizzo della prima definizione
+struct definizione *fine	= NULL;			// Indirizzo dell'ultima definizione
 /*-----------------------------------------------------------------------*/
 /*                parametri ricevuti da linea comando                    */
 /*-----------------------------------------------------------------------*/

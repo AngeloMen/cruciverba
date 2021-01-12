@@ -91,7 +91,7 @@ float rapporto(struct definizione *p) {
 /*-----------------------------------------------*/
 /* Prepara la lista delle parole analizzate      */
 /*-----------------------------------------------*/
-void AccodaLista(struct definizione *pd) {
+void AccodaLista(struct definizione *prossima) {
 	struct listaricerca *p;
 
 	if ((p = (struct listaricerca*) malloc(sizeof(struct listaricerca))) == NULL) {
@@ -99,9 +99,9 @@ void AccodaLista(struct definizione *pd) {
 		exit(1);
 	}
 
-	p->def = pd;
-	p->prec = NULL;
-	p->succ = NULL;
+	p->def	= prossima;
+	p->prec	= NULL;
+	p->succ	= NULL;
 
 	if (prima == NULL) {
 		ultima = prima = p;
