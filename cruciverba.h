@@ -81,8 +81,6 @@ char	schema[MaxR][MaxC];
 int		ctrsch[MaxR][MaxC];
 int		maxr, maxc;
 struct definizione definizione;
-struct definizione *inizio;        // Indirizzo della prima definizione
-struct definizione *fine;          // Indirizzo dell'ultima definizione
 struct definizione *p;             // 
 struct listaricerca dacercare;
 struct listaricerca *prima;

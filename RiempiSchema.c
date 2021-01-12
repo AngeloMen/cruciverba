@@ -9,7 +9,7 @@
 int RiempiSchema(void) {
 
     p = inizio;
-
+	AccodaLista(p);	
 	while (1) {
 		if (TrovaParola(p)) {							// Cerca la parola e se trovata
 			p->trovata = TRUE;

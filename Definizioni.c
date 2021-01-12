@@ -71,13 +71,12 @@ void AggiungiDefinizione(char OrVe     // 'O'=Orizzontale, 'V'=Verticale
 						, int r        // Riga di inizio
 						, int c)       // Colonna di inizio
 {
-	static int	sr=-1
-			   ,sc=-1 
+	static int	sr=-1					// Dovrebbe assicurare la prima rotture
+			   ,sc=-1					// Dovrebbe assicurare la prima rotture
 			   ,def = 0;
 
 	struct definizione *p;
-	int incC, incR
-		,riga, colonna, l;
+	int incC, incR, riga, colonna, l;
 
 	if ((p = (struct definizione*) malloc(sizeof(struct definizione))) == NULL) {
 		puts("Memoria esaurita");
@@ -95,16 +94,16 @@ void AggiungiDefinizione(char OrVe     // 'O'=Orizzontale, 'V'=Verticale
 	   	def+=1;
 	}
 
-	p->OrVe = OrVe;
-	p->numero = def;
-	p->lunghezza = l;
-	p->riga = r;
-	p->colonna = c;
-	p->trovata = FALSE;
-	p->ctr = 0;
-	p->i = 0;
-	p->prec = NULL;
-	p->succ = NULL;
+	p->OrVe			= OrVe;
+	p->numero		= def;
+	p->lunghezza	= l;
+	p->riga			= r;
+	p->colonna		= c;
+	p->trovata		= FALSE;
+	p->ctr			= 0;
+	p->i			= 0;
+	p->prec			= NULL;
+	p->succ			= NULL;
 
 	if (inizio == NULL) {
 		fine = inizio = p;

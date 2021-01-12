@@ -1,0 +1,3 @@
+ProssimaParola.c:		ultima->succ = p;
+ProssimaParola.c:	if (ultima->prec == NULL) {
+ProssimaParola.c:	p = ultima->prec;
