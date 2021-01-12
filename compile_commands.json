@@ -1,0 +1,74 @@
+[
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/AnalisiParametri.c.o -MF cruciverba.p/AnalisiParametri.c.o.d -o cruciverba.p/AnalisiParametri.c.o -c ../AnalisiParametri.c",
+    "file": "../AnalisiParametri.c",
+    "output": "cruciverba.p/AnalisiParametri.c.o"
+  },
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/Definizioni.c.o -MF cruciverba.p/Definizioni.c.o.d -o cruciverba.p/Definizioni.c.o -c ../Definizioni.c",
+    "file": "../Definizioni.c",
+    "output": "cruciverba.p/Definizioni.c.o"
+  },
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/LeggiDaTastiera.c.o -MF cruciverba.p/LeggiDaTastiera.c.o.d -o cruciverba.p/LeggiDaTastiera.c.o -c ../LeggiDaTastiera.c",
+    "file": "../LeggiDaTastiera.c",
+    "output": "cruciverba.p/LeggiDaTastiera.c.o"
+  },
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/LeggiDimensioni.c.o -MF cruciverba.p/LeggiDimensioni.c.o.d -o cruciverba.p/LeggiDimensioni.c.o -c ../LeggiDimensioni.c",
+    "file": "../LeggiDimensioni.c",
+    "output": "cruciverba.p/LeggiDimensioni.c.o"
+  },
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/main.c.o -MF cruciverba.p/main.c.o.d -o cruciverba.p/main.c.o -c ../main.c",
+    "file": "../main.c",
+    "output": "cruciverba.p/main.c.o"
+  },
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/MettiCasella.c.o -MF cruciverba.p/MettiCasella.c.o.d -o cruciverba.p/MettiCasella.c.o -c ../MettiCasella.c",
+    "file": "../MettiCasella.c",
+    "output": "cruciverba.p/MettiCasella.c.o"
+  },
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/PulisciSchema.c.o -MF cruciverba.p/PulisciSchema.c.o.d -o cruciverba.p/PulisciSchema.c.o -c ../PulisciSchema.c",
+    "file": "../PulisciSchema.c",
+    "output": "cruciverba.p/PulisciSchema.c.o"
+  },
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/GestioneParole.c.o -MF cruciverba.p/GestioneParole.c.o.d -o cruciverba.p/GestioneParole.c.o -c ../GestioneParole.c",
+    "file": "../GestioneParole.c",
+    "output": "cruciverba.p/GestioneParole.c.o"
+  },
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/RiempiSchema.c.o -MF cruciverba.p/RiempiSchema.c.o.d -o cruciverba.p/RiempiSchema.c.o -c ../RiempiSchema.c",
+    "file": "../RiempiSchema.c",
+    "output": "cruciverba.p/RiempiSchema.c.o"
+  },
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/StampaDefinizioni.c.o -MF cruciverba.p/StampaDefinizioni.c.o.d -o cruciverba.p/StampaDefinizioni.c.o -c ../StampaDefinizioni.c",
+    "file": "../StampaDefinizioni.c",
+    "output": "cruciverba.p/StampaDefinizioni.c.o"
+  },
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/TrovaParola.c.o -MF cruciverba.p/TrovaParola.c.o.d -o cruciverba.p/TrovaParola.c.o -c ../TrovaParola.c",
+    "file": "../TrovaParola.c",
+    "output": "cruciverba.p/TrovaParola.c.o"
+  },
+  {
+    "directory": "/home/angelo/programmi/cruciverba/build",
+    "command": "cc -Icruciverba.p -I. -I.. -I/usr/include/mysql -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -MD -MQ cruciverba.p/ProssimaParola.c.o -MF cruciverba.p/ProssimaParola.c.o.d -o cruciverba.p/ProssimaParola.c.o -c ../ProssimaParola.c",
+    "file": "../ProssimaParola.c",
+    "output": "cruciverba.p/ProssimaParola.c.o"
+  }
+]
