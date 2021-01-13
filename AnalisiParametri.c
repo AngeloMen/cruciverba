@@ -6,7 +6,7 @@
 #include "funzioni.h"
 
 const char *argp_program_bug_address = "someone@example.com";
-const char *argp_program_version = "version 1.3";
+const char *argp_program_version = "version 1.3.0";
 struct arguments
 {
 	char *argz;

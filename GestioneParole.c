@@ -178,8 +178,8 @@ void stamparicerca(struct definizione *p, int cancella) {
 		sprintf(coord, "[%i:%i]", p->riga+1, p->colonna+1);	
 		sprintf(parola, "(%i/%i)", p->i, p->ctr);	
 		char *j = p->parole + p->lunghezza * (p->i - 1);
-		printf("%2i %c, %*s, %*s, %.*s",  p->numero, p->OrVe, 8, coord
-										,10, parola,  p->lunghezza, j);
+		printf("%2i %c %*s %*s %.*s", p->numero, p->OrVe, 8, coord
+									,10, parola,  p->lunghezza, j);
 	}
 
 //	sleep(1);
