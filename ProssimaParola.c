@@ -12,6 +12,13 @@ struct definizione* ProssimaParola(struct definizione *prec) {
 	struct	definizione *p, *prossima;
 	int		ctrprec = INT_MAX, lunprec = 0, ctrn;
 
+	if (ultima->succ != NULL){
+		ultima		= ultima->succ;
+		prossima	= ultima->def;
+		ctrdef++;
+		return prossima;
+	}
+
 	p			= inizio;
 	prossima	= NULL;
 
@@ -127,8 +134,9 @@ struct definizione* ParolaPrecedente(void) {
 		return NULL;
 	}
 
-	p = ultima->prec;
-	pd = p->def;
+	p		= ultima->prec;
+	pd		= p->def;
+
 
 //
 // cancello la parola dallo schema 
@@ -141,10 +149,9 @@ struct definizione* ParolaPrecedente(void) {
 	stamparicerca(pd, TRUE);
 	ctrdef--;
 
-	free(ultima);
+//	free(ultima);
 
-	ultima = p;
-	p->succ = NULL;
+	ultima	= ultima->prec;
 
 	return p->def;
 
