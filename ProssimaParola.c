@@ -53,49 +53,6 @@ struct definizione* ProssimaParola(struct definizione *prec) {
 	return prossima;
 }
 /*-----------------------------------------------*/
-/* Conta le caselle piene della parola           */
-/*-----------------------------------------------*/
-int piene(struct definizione *p) {
-	int incC, incR, ctr = 0;
-
-	int riga	= p->riga;
-	int colonna	= p->colonna;
-
-	p->OrVe == 'O' ? (incC = 1, incR = 0) : (incC = 0, incR = 1);
-
-	for (int i = 0; i < p->lunghezza; i++) {
-		if (schema[riga][colonna] != ' ')
-		   	++ctr;
-		riga	+= incR;
-		colonna	+= incC;
-	}
-
-	return ctr;
-}
-/*-----------------------------------------------*/
-/* Calcola il rapporto tra caselle vuote e piene */
-/*-----------------------------------------------*/
-float rapporto(struct definizione *p) {
-	int vuote = 0, piene = 0, i, r, c;
-	int ic, ir;                         // Incrementi per sveltire i cicli
-
-	r = p->riga;
-	c = p->colonna;
-	p->OrVe == 'O' ? (ic = 1, ir = 0) : (ic = 0, ir = 1);
-
-	for (i = 0; i < p->lunghezza; i++) {
-		schema[r][c] == ' ' ? ++vuote : ++piene;
-		c = c + ic;
-		r = r + ir;
-	}
-
-	if (piene == 0)
-		return 999;
-
-	return vuote / piene;
-
-}
-/*-----------------------------------------------*/
 /* Prepara la lista delle parole analizzate      */
 /*-----------------------------------------------*/
 void AccodaLista(struct definizione *prossima) {
