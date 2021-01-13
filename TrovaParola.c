@@ -331,31 +331,6 @@ int bloccante(struct definizione *p) {
 }
 
 /*-----------------------------------------------------------*/
-/* ordina a caso le parole valide per ervitare di ripetere   */
-/* sempre le stesse sequenze di tentativi                    */
-/*-----------------------------------------------------------*/
-void mescolaparole(char *parole, int lung, int ctr) {
-	int  l
-		,c
-		,i;
-	char tempar;
-
-if (ctr <= 1) 
-	return;
-
-for (c = 0; c < ctr; c++) {
-	i = rand()%(ctr-1);
-	for (l = 0; l < lung; l++) {
-		tempar				= parole[i*lung + l];
-		parole[i*lung + l]	= parole[c*lung + l];
-		parole[c*lung + l]	= tempar;
-	}
-}
-
-return;
-
-}
-/*-----------------------------------------------------------*/
 /* Elimina le altre parole che  bloccano in base a quella    */
 /* che ha già trovato bloccante                              */
 /*-----------------------------------------------------------*/

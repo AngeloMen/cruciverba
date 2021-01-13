@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include "cruciverba.h"
 #include "funzioni.h"
-//void	stamparicerca(struct definizione *p, int cancella);
 /*-----------------------------------------------------------------*/
 /*         Scrive la parola richiesta prendendola dallo schema     */
 /*-----------------------------------------------------------------*/
@@ -186,4 +185,72 @@ void stamparicerca(struct definizione *p, int cancella) {
 //	sleep(1);
 	
 	return;
+}
+/*-----------------------------------------------------------*/
+/* ordina a caso le parole valide per ervitare di ripetere   */
+/* sempre le stesse sequenze di tentativi                    */
+/*-----------------------------------------------------------*/
+void mescolaparole(char *parole, int lung, int ctr) {
+	int  l
+		,c
+		,i;
+	char tempar;
+
+if (ctr <= 1) 
+	return;
+
+for (c = 0; c < ctr; c++) {
+	i = rand()%(ctr-1);
+	for (l = 0; l < lung; l++) {
+		tempar				= parole[i*lung + l];
+		parole[i*lung + l]	= parole[c*lung + l];
+		parole[c*lung + l]	= tempar;
+	}
+}
+
+return;
+
+}
+/*-----------------------------------------------*/
+/* Conta le caselle piene della parola           */
+/*-----------------------------------------------*/
+int piene(struct definizione *p) {
+	int incC, incR, ctr = 0;
+
+	int riga	= p->riga;
+	int colonna	= p->colonna;
+
+	p->OrVe == 'O' ? (incC = 1, incR = 0) : (incC = 0, incR = 1);
+
+	for (int i = 0; i < p->lunghezza; i++) {
+		if (schema[riga][colonna] != ' ')
+		   	++ctr;
+		riga	+= incR;
+		colonna	+= incC;
+	}
+
+	return ctr;
+}
+/*-----------------------------------------------*/
+/* Calcola il rapporto tra caselle vuote e piene */
+/*-----------------------------------------------*/
+float rapporto(struct definizione *p) {
+	int vuote = 0, piene = 0, i, r, c;
+	int ic, ir;                         // Incrementi per sveltire i cicli
+
+	r = p->riga;
+	c = p->colonna;
+	p->OrVe == 'O' ? (ic = 1, ir = 0) : (ic = 0, ir = 1);
+
+	for (i = 0; i < p->lunghezza; i++) {
+		schema[r][c] == ' ' ? ++vuote : ++piene;
+		c = c + ic;
+		r = r + ir;
+	}
+
+	if (piene == 0)
+		return 999;
+
+	return vuote / piene;
+
 }
