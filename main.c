@@ -13,9 +13,18 @@
 							/* delle singole lettere.                   */
 //int		maxr, maxc;			/* Dimensioni dello schema (righe, colonne) */
 int	contatore			= 0;
+int	ctrdef				= 1;
+
 int	totaleVerticali		= 0;
 int	totaleOrizzontali	= 0;
-int	ctrdef				= 1;
+int	totaleDefinizioni	= 0;
+int ctrOri			    = 0; 
+int ctrVer			    = 0; 
+int ctrCan			    = 0; 
+int ctrTot			    = 0; 
+int ctrSearchF		    = 0; 
+int ctrSearchV		    = 0; 
+int ctrSearchT		    = 0; 
 
 struct definizione *inizio	= NULL;			// Indirizzo della prima definizione
 struct definizione *fine	= NULL;			// Indirizzo dell'ultima definizione
@@ -69,6 +78,8 @@ int main(int argc, char *argv[]) {
 
 	StampaDefinizioni();						// Chiede se stanoarele definizioni
 
+	BuildSearchList();
+
 	if (!(ApriDatabase())) {					// Apre il database contenente il dizionario
 		puts("Errata apertura del database\n");
 		return 1;
@@ -84,6 +95,8 @@ int main(int argc, char *argv[]) {
 	ChiudiDatabase();							// Chiudi database
 
 	StampaSoluzioni();
+
+	stampastatistiche();
 
 	return 0;
 

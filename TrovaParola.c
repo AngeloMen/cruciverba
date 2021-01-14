@@ -169,6 +169,12 @@ int CercaParole(struct definizione *p, int SoloCtr) {
 	MYSQL_RES *result;
 	MYSQL_ROW riga;
 
+	ctrSearchT++;
+	if (SoloCtr)
+		ctrSearchV++;
+	else 
+		ctrSearchF++;
+
 	r = p->riga;
 	c = p->colonna;
 
@@ -192,8 +198,10 @@ int CercaParole(struct definizione *p, int SoloCtr) {
 			"AND difficolta <=   %i "
 			"AND valido      = TRUE", p->lunghezza, p->lunghezza, parola,
 			difficolta);
-	if ((!SoloCtr)
-	||  (!nonRandom))
+	if ((SoloCtr)
+	||  (nonRandom)) 
+		strcat(select, " order by parola");
+	else
 		strcat(select, " order by RAND()");
 		
 
@@ -259,36 +267,9 @@ int CercaParole(struct definizione *p, int SoloCtr) {
 /* Verifica che la parola com'è collocata non blocchi la ri- */
 /* cerca di altre parole.                                    */
 /*-----------------------------------------------------------*/
-int bloccante_old(struct definizione *p) {
-	struct definizione *pd;
-	char *parola;
-
-	parola = p->parole + ((p->lunghezza) * ((p->i) - 1));
-	CaricaParola(p, parola);  // Carica la parola nello schema
-
-	//printf("\033[24;1HTest: %.*s", p->lunghezza, parola);
-	pd = inizio;
-
-	while (pd != NULL) {
-		if (SiIncrociano(p , pd)) {
-			if ((CercaParole(pd, TRUE)) == 0) {
-                    cancella_bloccanti(p, pd);
-					CancellaParola(p);
-					return TRUE;
-				}
-			}
-		pd = pd->succ;
-	}
-	CancellaParola(p);
-	return FALSE;
-}
-/*-----------------------------------------------------------*/
-/* Verifica che la parola com'è collocata non blocchi la ri- */
-/* cerca di altre parole.                                    */
-/*-----------------------------------------------------------*/
 int bloccante(struct definizione *p) {
 	char *parola;
-	int riga, colonna;
+	int riga, colonna, bloccante = FALSE;
 
 	parola	=	p->parole + ((p->lunghezza) * ((p->i) - 1));
 	riga	=	p->riga;
@@ -303,7 +284,7 @@ int bloccante(struct definizione *p) {
 				    if ((CercaParole(casella[riga][colonna].vert, TRUE)) == 0) {
 		                cancella_bloccanti(p, casella[riga][colonna].vert);
   	  		      	 	CancellaParola(p);
-			    		return TRUE;
+			    		bloccante = TRUE;
 				}
 			    colonna++;
 			}
@@ -317,7 +298,7 @@ int bloccante(struct definizione *p) {
 			       if ((CercaParole(casella[riga][colonna].oriz, TRUE)) == 0) {
                        cancella_bloccanti(p, casella[riga][colonna].oriz);
   				 	   CancellaParola(p);
-					   return TRUE;
+					   bloccante = TRUE;
 				}
 				riga++;
 		   }
@@ -325,9 +306,9 @@ int bloccante(struct definizione *p) {
 		}
 
 	}
-     
-	CancellaParola(p);
-	return FALSE;
+    if (!(bloccante)) 
+		CancellaParola(p);
+	return bloccante;
 }
 
 /*-----------------------------------------------------------*/
@@ -372,7 +353,6 @@ void cancella_da_stringa(struct definizione *p, char lettera, int posizione) {
 /*-----------------------------------------------------------*/
 void taglia(char *p, int inizio, int lunghezza) {
 
-//	printf("Taglia - Stringa ricevuta in input: %s, carattere iniziale: %i, lunghezza: %i\n", p, inizio, lunghezza);
 
 	int l = strlen(p);
 	
@@ -383,7 +363,7 @@ void taglia(char *p, int inizio, int lunghezza) {
 
 }
 /*-----------------------------------------------------------*/
-/* Abblenca la parila che non va bene.                       */
+/* Abblenca la parola che non va bene.                       */
 /*-----------------------------------------------------------*/
 void elimina_parola(char *p, int lunghezza) {
 	int i;
@@ -393,6 +373,7 @@ void elimina_parola(char *p, int lunghezza) {
 		p++;
 	}		 
 
+	ctrCan++;
 	return;
 
 }

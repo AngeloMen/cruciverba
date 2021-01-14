@@ -42,9 +42,22 @@ extern int LettoSchema;         // Se true ha caricato lo schema d file
 extern int minl;                // Lunghezza minima parole da cercare
 extern int difficolta;			// Massimo livello di difficoltà per le parole da usare
 extern int contatore;			// Contatore delle ricerche
-extern int totaleVerticali;     // Totale definizioni verticali
-extern int totaleOrizzontali;   // Totale definizioni orizzontali
-extern int ctrdef;			    // 
+extern int ctrdef;			    // Per stampa parola in ricerca
+/*
+ * Contatori per statistiche
+ *
+*/
+extern int totaleOrizzontali;
+extern int totaleVerticali;
+extern int totaleDefinizioni;
+extern int ctrOri;			    // 
+extern int ctrVer;			    // 
+extern int ctrTot;			    // 
+extern int ctrCan;			    // 
+extern int ctrSearchF;		    // 
+extern int ctrSearchV;		    // 
+extern int ctrSearchT;		    // 
+
 
 extern struct definizione {
 	char OrVe;                       // "O"=Orizzontale, "V"=Verticale

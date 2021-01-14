@@ -46,4 +46,8 @@ void	cancella_bloccanti(struct definizione*, struct definizione *pd);
 void	cancella_da_stringa(struct definizione*, char, int);
 void	elimina_parola(char*, int);
 void	comprimi_stringa(char*);
+void	BuildSearchList(void);
+void	stampaparola(struct definizione*);
+void	stampaparola_i(struct definizione*, int i);
+void	stampastatistiche(void);
 #endif

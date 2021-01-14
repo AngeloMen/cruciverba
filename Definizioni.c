@@ -57,7 +57,6 @@ int InizioOriz(int r, int c) {
 int InizioVert(int r, int c) {
 
 	if ((r == 0 || schema[r - 1][c] == NERA) && ((r + 1) < maxr)
-//			&& (schema[r + 1][c] == ' '))
 			&& (schema[r + 1][c] != NERA))
 		return 1;
 
@@ -84,9 +83,10 @@ void AggiungiDefinizione(char OrVe     // 'O'=Orizzontale, 'V'=Verticale
 	}
 
 	(OrVe == 'O') ? (incC = 1, incR = 0)		: (incC = 0, incR = 1);
-	(OrVe == 'O') ? (l = CalcolaLungOriz(r, c))	: (totaleVerticali += 1);
-	(OrVe == 'O') ? (totaleOrizzontali +=1)		: (l = CalcolaLungVert(r, c));
+	(OrVe == 'O') ? (l = CalcolaLungOriz(r, c))	: (totaleVerticali++);
+	(OrVe == 'O') ? (totaleOrizzontali++)		: (l = CalcolaLungVert(r, c));
 
+	totaleDefinizioni++;
 
 	if ((sr != r) || (sc != c)) {
 		sr = r;
@@ -203,3 +203,35 @@ void DisegnaRiga() {
 	printf("|\n");
 	return;
 }
+/* -------------------------------------------
+ * Costruisce la lista ordinata per la ricerca
+ *--------------------------------------------*/
+void	BuildSearchList(void) {
+	struct definizione *pDef;
+	struct listaricerca *pLista;
+
+	pLista	= prima;
+	pDef	= inizio;
+   
+
+	for (int i=0; pDef != NULL; i++){
+		switch (pDef->OrVe){
+			case 'O':
+				{
+				ctrOri++;
+				break;
+				}; 
+			case 'V':
+				{
+				ctrVer++;
+				break;
+				};
+		}
+	ctrTot++;
+	pDef	= pDef->succ;
+	}
+
+
+
+}
+

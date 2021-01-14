@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include "cruciverba.h"
+#include "funzioni.h"
 int system(const char *command);
 
-/*------------------------------------------
- *  Prototipi
- * ----------------------------------------*/
-void stampaparola(struct definizione *p);
 /*-----------------------------------------------------------------*/
 /*             Inizio della funzione                               */
 /*-----------------------------------------------------------------*/
@@ -107,5 +104,31 @@ void StampaSoluzioni(void) {
 	scanf("%c", &risp);
 	scanf("%c", &risp);
 	system("clear");
+	return;
+}
+/*
+ * Stampa le statistiche
+ *
+*/
+void stampastatistiche(void) {
+
+	char risp;
+
+	printf("Stampo le statistiche?(s=si, n=no)?\n");
+	scanf("%c", &risp);
+	if (risp != 's') 
+		return;
+	
+	printf	("Totale definizioni orizzontali:\t\t\t%6i\n",			totaleOrizzontali);
+	printf	("Totale definizioni verticali:\t\t\t%6i\n",			totaleVerticali);
+	printf	("Totale definizioni:\t\t\t\t%6i\n\n",					totaleDefinizioni);
+	printf	("Totale orizzontali BuildLista:\t\t\t%6i\n",			ctrOri);
+	printf	("Totale verticali BuildLista:\t\t\t%6i\n",				ctrVer);
+	printf	("Totale definizioni BuildLista:\t\t\t%6i\n\n",			ctrTot);
+	printf	("Totale ricerche di parole per inserimento:\t%6i\n",	ctrSearchF);
+	printf	("Totale ricerche di parole per blocco:\t\t%6i\n",		ctrSearchV);
+	printf	("Totale ricerche di parole :\t\t\t%6i\n\n",			ctrSearchT);
+	printf	("Totale cancellazioni di parole:\t\t\t%6i\n",			ctrCan);	
+
 	return;
 }
