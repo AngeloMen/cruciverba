@@ -86,20 +86,6 @@ extern struct listaricerca {
 extern struct listaricerca *prima;
 extern struct listaricerca *ultima;
 extern const char *argp_program_version;
+typedef enum{Open, Closed, Invalid} DB_STATUS;
 extern enum DB_STATUS Db_status;
-/*
- * Test globali
- */
-char	schema[MaxR][MaxC];
-int		ctrsch[MaxR][MaxC];
-int		maxr, maxc;
-struct definizione definizione;
-struct definizione *p;             // 
-struct listaricerca dacercare;
-struct listaricerca *prima;
-struct listaricerca *ultima;
-struct passante casella[MaxR][MaxC];
-
-enum   DB_STATUS {Open, Closed, Invalid};
-enum   DB_STATUS Db_status;
 #endif

@@ -30,7 +30,6 @@ void SalvaSchema(void) {
 
 	printf("Salvo lo schema?(s=si, n=no)?\n");
 	scanf("%c", &risp);
-	scanf("%c", &risp);
 	if (risp != 's')
 		return;
 

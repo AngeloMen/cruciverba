@@ -17,7 +17,7 @@ void	DisegnaSchema(void);							//
 void	LeggiDaTastiera(void);							// Legge le prime parole da tastiera
 void	LeggiDimensioni(void);							// Legge le dimensioni
 void	MettiCaselleNere(void);							// mette le caselle nere
-void	PremiTasto(int, int);
+void	PremiTasto(void);        
 void	PulisciSchema(void);							// Inizializza lo schema a spazi
 void	SalvaSchema(void);								// salva lo schema se richiesto
 void	ScriviCasella(int, int);
@@ -50,4 +50,6 @@ void	BuildSearchList(void);
 void	stampaparola(struct definizione*);
 void	stampaparola_i(struct definizione*, int i);
 void	stampastatistiche(void);
+int		get_answer(void);
+void	stampasoluzione(struct definizione*);
 #endif

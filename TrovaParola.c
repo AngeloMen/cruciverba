@@ -66,7 +66,6 @@ int TrovaParola_1(struct definizione *p) {
 /*-------------------------------------------------*/
 int TrovaParola_2(struct definizione *p) {
 	char *parola;
-//	return FALSE;
 
 	if (p->ctr == 0) {					// Se non ancora andato in cerca
 		CercaParole(p, FALSE);			//   interroga il database e carica i risultati
@@ -120,7 +119,6 @@ int usata(struct definizione *p) {
 		pl = pl->succ;
 	}
 
-	
 	return FALSE;
 
 }
@@ -134,15 +132,12 @@ int ApriDatabase() {
 	mysql_init(&mysql);
 	mysql_options(&mysql, MYSQL_READ_DEFAULT_GROUP, "memorizza");
 
-	//if (!mysql_real_connect(&mysql, DBSERVER, DBUSER, DBPWD,
 	if (!mysql_real_connect(&mysql, DBSERVER, DBUSER, DBPWD,
 			"dizionario", 0, NULL, 0)) {
 		fprintf(stderr, "errore di connessione al server: %s\n",
 				mysql_error(&mysql));
 		return 0;
-		Db_status = Invalid;
 	}
-	Db_status = Open;
 	return 1;
 }
 /* -----------------------------------  */
@@ -150,7 +145,6 @@ int ApriDatabase() {
 /* -----------------------------------  */
 int ChiudiDatabase() {
 	mysql_close(&mysql);     // Chiusura del database
-	Db_status = Closed;
 	return 1;
 }
 

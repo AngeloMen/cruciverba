@@ -7,11 +7,17 @@
 /*-----------------------------------------------------------------------*/
 /*                     variabili globali                                 */
 /*-----------------------------------------------------------------------*/
+char	schema[MaxR][MaxC];
+int		ctrsch[MaxR][MaxC];
+int		maxr, maxc;
+struct definizione definizione;
+struct definizione *p;             // 
+struct listaricerca dacercare;
+struct listaricerca *prima;
+struct listaricerca *ultima;
+struct passante casella[MaxR][MaxC];
 
-//char	schema[MaxR][MaxC];	/* Matrice che contiene lo schema           */
-//int		ctrsch[MaxR][MaxC]; /* Serve a controllare la cancellazione     */
-							/* delle singole lettere.                   */
-//int		maxr, maxc;			/* Dimensioni dello schema (righe, colonne) */
+
 int	contatore			= 0;
 int	ctrdef				= 1;
 
@@ -39,13 +45,6 @@ int minl;                   // La lunghezza minima della parola da cercare
 int nonRandom = FALSE;		// Ricerca in ordine alfabetico o casuale
 int nonValide;				// Includi anche le parole marcate nel db come non valide
 
-//struct definizione definizione;
-//struct definizione *inizio;        // Indirizzo della prima definizione
-//struct definizione *fine;          // Indirizzo dell'ultima definizione
-//struct definizione *p;             // 
-//struct listaricerca dacercare;
-//struct listaricerca *prima;
-//struct listaricerca *ultima;
 /*-----------------------------------------------------------------------*/
 /*                     Programma principale                              */
 /*-----------------------------------------------------------------------*/
@@ -76,7 +75,7 @@ int main(int argc, char *argv[]) {
 
 	DisegnaSchema();							// disegna lo schema finale a video
 
-	StampaDefinizioni();						// Chiede se stanoarele definizioni
+	StampaDefinizioni();						// Chiede se stampare le  definizioni
 
 	BuildSearchList();
 
@@ -86,7 +85,6 @@ int main(int argc, char *argv[]) {
 	}
 
 	if (RiempiSchema()) {						// Ciclo di riempimento dello schema;
-		PremiTasto(50, 1);
 		DisegnaSchema();
 	} else {
 		puts("\033[24;1HSchema irrisolto\033[K");

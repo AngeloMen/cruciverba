@@ -134,6 +134,24 @@ void stampaparola(struct definizione *p) {
 /* stampa la parola attiva della definizione                 */
 /*															 */
 /*-----------------------------------------------------------*/
+void stampasoluzione(struct definizione *p) {
+	int i;
+	char *j;
+	char parola[Maxl];
+
+	j = p->parole + p->lunghezza * (p->i - 1);
+	for (i = 0; i < p->lunghezza; i++){
+		parola[i] = *j;
+		j++;
+	}
+	i = p->lunghezza;
+	parola[i] = '\0';
+  	printf("%2d. %s", p->numero, parola);
+	return;
+}
+/*-----------------------------------------------------------*/
+/* stampa la parola attiva della definizione                 */
+/*-----------------------------------------------------------*/
 void stampaparola_i(struct definizione *p, int i) {
 	char *j;
 	char parola[Maxl];
@@ -148,19 +166,32 @@ void stampaparola_i(struct definizione *p, int i) {
   	printf("Parola: %c, riga= %i, colonna=%i: %s             \n", p->OrVe, p->riga+1, p->colonna+1, parola);
 	return;
 }
-void PremiTasto(int riga, int colonna) {
-	char risp;
-		
-	gotoxy(colonna, riga);
-	printf("\n");
-	printf("premi un tasto per proseguire\n");
-	scanf("%c", &risp);
-	scanf("%c", &risp);
+/*-----------------------------------------------------------*/
+/* acquisisce un carattere (s/n)                             */
+/*-----------------------------------------------------------*/
+int get_answer(void) {
+	int c;
+	int answer = 0;
 
+	while (((c= getchar()) != EOF) && (c != '\n'))
+	{
+		if (answer == 0 && (c == 's' || c == 'n'))
+			answer = c;
+	}	
+	return answer;
+}
+/*-----------------------------------------------------------*/
+/* Premi INVIO per continuare/n)                             */
+/*-----------------------------------------------------------*/
+void PremiTasto(void) {
+	int c;
+
+	c = getchar();
+	while ((c != '\n'));
+	return;
 }
 /*-----------------------------------------------------------*/
 /* stampa la parola attiva della definizione                 */
-/*															 */
 /*-----------------------------------------------------------*/
 void stamparicerca(struct definizione *p, int cancella) {
 	int riga, colonna, righe;

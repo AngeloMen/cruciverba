@@ -21,7 +21,8 @@ void LeggiDaTastiera(void) {
 	evidenzia(p);
 
 	do {
-		printf("\033[44;1HDef: %i, riga,%i colonna=%i, lunghezza:%i. S=Successiva, I=Inserisci, F=Fine.\n"
+		gotoxy(1,40);
+		printf("Def: %i, riga,%i colonna=%i, lunghezza:%i. S=Successiva, I=Inserisci, F=Fine. "
 									,p->numero, p->riga, p->colonna, p->lunghezza);
 		scelta = getchar();
 		switch (scelta) {

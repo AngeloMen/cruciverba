@@ -1,109 +1,95 @@
 #include <stdio.h>
+#include <unistd.h>
 #include "cruciverba.h"
 #include "funzioni.h"
 int system(const char *command);
 
 /*-----------------------------------------------------------------*/
-/*             Inizio della funzione                               */
+/*             Stampa la lista delle definizioni                   */
 /*-----------------------------------------------------------------*/
 void StampaDefinizioni(void) {
-	char risp;
+	int risp;
 	struct definizione *p;
+	int x, y;
 
-	printf("Stampo le definizioni?(s=si, n=no)?\n");
-	scanf("%c", &risp);
-	scanf("%c", &risp);
+	gotoxy(1,40);
+	printf("Stampo le definizioni?(s=si, n=no)?");
+	risp = get_answer();
 	if (risp != 's')
 		return;
 
-	system("clear");
-	printf("Orizzontali\n");
+	x = maxc*4 + 10;
+	y = 2;
+	gotoxy(x,y);
+	printf("ORIZZONTALI");
 
-	p = inizio;
-
-	while (1) {
+	for (p = inizio; p != NULL; p=p->succ) {
 		if (p->OrVe == 'O') {
-			printf("Def: %2d, lung: %2d, riga: %2d, col:%2d\n", p->numero,
-					p->lunghezza, (p->riga) + 1, (p->colonna) + 1);
-			if (p->succ == NULL)
-				break;
+			y++;
+			gotoxy(x,y);
+			printf("%2d. [%d:%d-%d]", p->numero, (p->riga) + 1, (p->colonna) + 1, p->lunghezza);
 		}
-		if (p->succ == NULL)
-			break;
-		p = p->succ;
 	}
 
-	p = inizio;
-	printf("Verticali\n");
-	while (1) {
+	x = x + 40;
+	y = 2;
+	gotoxy(x,y);
+	printf("VERTICALI\n");
+
+	for (p = inizio; p != NULL; p=p->succ) {
 		if (p->OrVe == 'V') {
-			printf("Def: %2d, lung: %2d, riga: %2d, col:%2d\n", p->numero,
-					p->lunghezza, (p->riga) + 1, (p->colonna) + 1);
-			if (p->succ == NULL)
-				break;
+			y++;
+			gotoxy(x,y);
+			printf("%2d. [%d:%d-%d]", p->numero, (p->riga) + 1, (p->colonna) + 1, p->lunghezza);
 		}
-		if (p->succ == NULL)
-			break;
-		p = p->succ;
 	}
-	printf("premi un tasto per proseguire?\n");
-	scanf("%c", &risp);
-	scanf("%c", &risp);
-	system("clear");
+
+	gotoxy(1,40);
+	printf("Premi INVIO per continuare%*s",40, "");
+	PremiTasto();
 	return;
 }
+/*-----------------------------------------------------------------*/
+/*             Stampa le soluzioni                                 */
+/*-----------------------------------------------------------------*/
 void StampaSoluzioni(void) {
-	char risp;
+	int risp;
 	struct definizione *p;
-  	int r;
-  	int c;
+	int x, y;
 
 
-	printf("Stampo le soluzioni?(s=si, n=no)?\n");
-	scanf("%c", &risp);
-	scanf("%c", &risp);
+	gotoxy(1,40);
+	printf("Stampo le soluzioni?(s=si, n=no)?");
+	risp = get_answer();
 	if (risp != 's')
 		return;
 
-	system("clear");
-	printf("Orizzontali\n");
+	x = maxc*4 + 10;
+	y = 2;
+	gotoxy(x,y);
 
-	p = inizio;
-
-	while (1) {
+	printf("ORIZZONTALI\n");
+	for (p = inizio; p != NULL; p=p->succ) {
 		if (p->OrVe == 'O') {
-			r = p->riga;
-			c = p->colonna;
-		    printf("Def: %2d. ", p->numero);
-			stampaparola(p);
-			if (p->succ == NULL)
-				break;
+			y++;
+			gotoxy(x,y);
+		    stampasoluzione(p);
 		}
-		   if (p->succ == NULL)
-						break;
-			p = p->succ;
 	}
 
-	p = inizio;
-	printf("Verticali\n");
-	while (1) {
+	x = x +45;
+	y = 2;
+	gotoxy(x,y);
+
+	printf("VERTICALI\n");
+	for (p = inizio; p != NULL; p=p->succ) {
 		if (p->OrVe == 'V') {
-			r = p->riga;
-			c = p->colonna;
-			printf("Def: %2d. ", p->numero);
-			stampaparola(p);
-			if (p->succ == NULL)
-				break;
+			y++;
+			gotoxy(x,y);
+		    stampasoluzione(p);
 		}
-		if (p->succ == NULL)
-		   break;
-        p = p->succ;
 	}
 
-	printf("premi un tasto per proseguire\n");
-	scanf("%c", &risp);
-	scanf("%c", &risp);
-	system("clear");
 	return;
 }
 /*
@@ -112,13 +98,17 @@ void StampaSoluzioni(void) {
 */
 void stampastatistiche(void) {
 
-	char risp;
+	int risp;
 
-	printf("Stampo le statistiche?(s=si, n=no)?\n");
-	scanf("%c", &risp);
+	gotoxy(1,40);
+	printf("Stampo le statistiche?(s=si, n=no)?");
+	risp = get_answer();
 	if (risp != 's') 
 		return;
 	
+	putchar('\n');
+	for (int i = 0; i < 54; putchar('='), i++);
+	putchar('\n');
 	printf	("Totale definizioni orizzontali:\t\t\t%6i\n",			totaleOrizzontali);
 	printf	("Totale definizioni verticali:\t\t\t%6i\n",			totaleVerticali);
 	printf	("Totale definizioni:\t\t\t\t%6i\n\n",					totaleDefinizioni);
@@ -129,6 +119,9 @@ void stampastatistiche(void) {
 	printf	("Totale ricerche di parole per blocco:\t\t%6i\n",		ctrSearchV);
 	printf	("Totale ricerche di parole :\t\t\t%6i\n\n",			ctrSearchT);
 	printf	("Totale cancellazioni di parole:\t\t\t%6i\n",			ctrCan);	
+	for (int i = 0; i < 54; putchar('='), i++);
+	putchar('\n');
+	putchar('\n');
 
 	return;
 }
