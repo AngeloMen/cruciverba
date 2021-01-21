@@ -30,7 +30,7 @@ struct definizione* ProssimaParola(struct definizione *prec) {
 			continue;
 
 		if (SiIncrociano(p, prec)) {
-			ctrn = CercaParole(p, TRUE);
+			ctrn		=	CercaParole(p, TRUE);
 			prossima	=	p;
 			ctrprec 	=	ctrn;
 			lunprec		=	p->lunghezza;

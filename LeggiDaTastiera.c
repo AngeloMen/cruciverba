@@ -14,7 +14,7 @@
 /*             Inizio della funzione                               */
 /*-----------------------------------------------------------------*/
 void LeggiDaTastiera(void) {
-	char scelta;									 /* Scelta                                       */
+	int scelta;									 /* Scelta                                       */
 	struct definizione *p;
 
 	p = inizio;
@@ -24,7 +24,7 @@ void LeggiDaTastiera(void) {
 		gotoxy(1,40);
 		printf("Def: %i, riga,%i colonna=%i, lunghezza:%i. S=Successiva, I=Inserisci, F=Fine. "
 									,p->numero, p->riga, p->colonna, p->lunghezza);
-		scelta = getchar();
+		scelta = get_scelta();
 		switch (scelta) {
 		case 's':
 			ScriviParola(p);						/* riscrive la parola precedente  */

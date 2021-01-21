@@ -26,10 +26,11 @@ void LeggiDimensioni(void) {
 void SalvaSchema(void) {
 	FILE *fp;
 	char NomeFile[80];
-	char risp;
+	int  risp;
 
-	printf("Salvo lo schema?(s=si, n=no)?\n");
-	scanf("%c", &risp);
+	gotoxy(1,40);
+	printf("Salvo lo schema?(s=si, n=no)?");
+	risp = get_answer();
 	if (risp != 's')
 		return;
 

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <mysql.h>
 #include <cups/cups.h>
 #include "cruciverba.h"
 #include "funzioni.h"
@@ -10,13 +11,15 @@
 char	schema[MaxR][MaxC];
 int		ctrsch[MaxR][MaxC];
 int		maxr, maxc;
-struct definizione definizione;
-struct definizione *p;             // 
-struct listaricerca dacercare;
-struct listaricerca *prima;
-struct listaricerca *ultima;
-struct passante casella[MaxR][MaxC];
+struct	definizione definizione;
+struct	definizione *p;             // 
+struct	listaricerca dacercare;
+struct	listaricerca *prima;
+struct	listaricerca *ultima;
+struct	passante casella[MaxR][MaxC];
+int		Db_Aperto = FALSE;
 
+MYSQL mysql;
 
 int	contatore			= 0;
 int	ctrdef				= 1;
@@ -95,6 +98,8 @@ int main(int argc, char *argv[]) {
 	StampaSoluzioni();
 
 	stampastatistiche();
+
+	AggiornamentoDatabase();
 
 	return 0;
 

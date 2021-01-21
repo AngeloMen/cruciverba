@@ -181,6 +181,20 @@ int get_answer(void) {
 	return answer;
 }
 /*-----------------------------------------------------------*/
+/* acquisisce un carattere (s/n)                             */
+/*-----------------------------------------------------------*/
+int get_scelta(void) {
+	int c;
+	int answer = 0;
+
+	while (((c= getchar()) != EOF) && (c != '\n'))
+	{
+		if (answer == 0 && (c == 's' || c == 'c' || c == 'i' || c == 'f'))
+			answer = c;
+	}	
+	return answer;
+}
+/*-----------------------------------------------------------*/
 /* Premi INVIO per continuare/n)                             */
 /*-----------------------------------------------------------*/
 void PremiTasto(void) {

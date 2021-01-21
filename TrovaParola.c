@@ -136,8 +136,10 @@ int ApriDatabase() {
 			"dizionario", 0, NULL, 0)) {
 		fprintf(stderr, "errore di connessione al server: %s\n",
 				mysql_error(&mysql));
+		Db_Aperto = FALSE;
 		return 0;
 	}
+	Db_Aperto = TRUE;
 	return 1;
 }
 /* -----------------------------------  */
@@ -145,6 +147,7 @@ int ApriDatabase() {
 /* -----------------------------------  */
 int ChiudiDatabase() {
 	mysql_close(&mysql);     // Chiusura del database
+	Db_Aperto = FALSE;
 	return 1;
 }
 

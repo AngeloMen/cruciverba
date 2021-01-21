@@ -51,5 +51,8 @@ void	stampaparola(struct definizione*);
 void	stampaparola_i(struct definizione*, int i);
 void	stampastatistiche(void);
 int		get_answer(void);
+int		get_scelta(void);
 void	stampasoluzione(struct definizione*);
+void	AggiornaParola(struct definizione*);
+void	AggiornamentoDatabase(void);
 #endif

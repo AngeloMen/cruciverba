@@ -86,6 +86,5 @@ extern struct listaricerca {
 extern struct listaricerca *prima;
 extern struct listaricerca *ultima;
 extern const char *argp_program_version;
-typedef enum{Open, Closed, Invalid} DB_STATUS;
-extern enum DB_STATUS Db_status;
+extern int Db_Aperto;
 #endif
