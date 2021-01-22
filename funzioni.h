@@ -55,4 +55,6 @@ int		get_scelta(void);
 void	stampasoluzione(struct definizione*);
 void	AggiornaParola(struct definizione*);
 void	AggiornamentoDatabase(void);
+int		IncrociCompleti(struct definizione*);
+char*	estraiparola(struct definizione*);
 #endif

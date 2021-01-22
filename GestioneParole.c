@@ -80,8 +80,53 @@ int SiIncrociano(struct definizione *p, struct definizione *pd) {
 	   ,riga_iniziale
 	   ,riga_finale;
 
+	if (p->OrVe == pd->OrVe)
+		return FALSE;
+
+	switch  (p->OrVe)
+	{
+		case 'V':
+			colonna				= p->colonna;
+			colonna_iniziale	= pd->colonna;
+			colonna_finale		= pd->colonna + pd->lunghezza - 1;
+			riga				= pd->riga;
+			riga_iniziale		= p->riga;
+			riga_finale			= p->riga + p->lunghezza - 1;
+			break;
+		case 'O':
+			colonna				= pd->colonna;
+			colonna_iniziale	= p->colonna;
+			colonna_finale		= p->colonna + p->lunghezza - 1;
+			riga				= p->riga;
+			riga_iniziale		= pd->riga;
+			riga_finale			= pd->riga + pd->lunghezza - 1;
+			break;
+	}
+
+
+	if (((colonna >= colonna_iniziale) && (colonna <= colonna_finale))
+	&& ((riga     >= riga_iniziale)    && (riga    <= riga_finale))){
+		return TRUE;
+	}
+	 return FALSE;
+}
+/*-----------------------------------------------------------*/
+/* controlla se le due definizioni ricevute in input         */
+/* si incrociano                                             */
+/*-----------------------------------------------------------*/
+int SiIncrociano_old(struct definizione *p, struct definizione *pd) {
+
+	int	colonna
+	   ,colonna_iniziale
+	   ,colonna_finale
+	   ,riga
+	   ,riga_iniziale
+	   ,riga_finale;
+
 	if (pd->trovata)
 	   return FALSE;
+	if (p->OrVe == pd->OrVe)
+		return FALSE;
 
 	if ((p->OrVe == 'V') && (pd->OrVe == 'O')){
 		colonna				= p->colonna;
@@ -129,6 +174,28 @@ void stampaparola(struct definizione *p) {
 	parola[i] = '\0';
   	printf("Parola: %c, riga= %2i, colonna=%2i: %s             \n", p->OrVe, p->riga+1, p->colonna+1, parola);
 	return;
+}
+/*-----------------------------------------------------------*/
+/* stampa la parola attiva della definizione                 */
+/*															 */
+/*-----------------------------------------------------------*/
+char* estraiparola(struct definizione *p) {
+	int i;
+	char *j;
+	char *parola;
+	char *risult;
+
+	parola = malloc(Maxl);
+	risult = parola;
+
+	j = p->parole + p->lunghezza * (p->i - 1);
+	for (i = 0; i < p->lunghezza; i++){
+		*parola = *j;
+		j++;
+		parola++;
+	}
+	*parola = '\0';
+	return risult;
 }
 /*-----------------------------------------------------------*/
 /* stampa la parola attiva della definizione                 */
@@ -298,4 +365,26 @@ float rapporto(struct definizione *p) {
 
 	return vuote / piene;
 
+}
+/*-----------------------------------------------*/
+/* Calcola il rapporto tra caselle vuote e piene */
+/*-----------------------------------------------*/
+int IncrociCompleti(struct definizione *p) {
+	int incR = 0, incC = 0;
+	int r, c;
+
+	p->OrVe == 'O' ? (incC = 1, incR = 0) : (incC = 0, incR = 1);
+
+	r	= p->riga;
+	c	= p->colonna;
+
+	for (int i = 0; i < p->lunghezza; i++){
+		if (casella[r][c].oriz != NULL)
+			if (!(casella[r][c].oriz->trovata))
+				return FALSE;
+		if (casella[r][c].vert != NULL)
+			if (!(casella[r][c].vert->trovata))
+				return FALSE;
+	}
+	return TRUE;
 }
