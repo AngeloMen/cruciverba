@@ -9,6 +9,19 @@
 /*           e costruisce una lista delle parole cercate          */
 /*----------------------------------------------------------------*/
 struct definizione* ProssimaParola(struct definizione *prec) {
+
+	struct definizione *prossima;
+
+	switch(sceltaprox) {
+		case 0: prossima = ProssimaParola0(prec);
+				break;
+		case 1: prossima = ProssimaParola1(prec);
+				break;
+	}
+	return prossima;
+
+}
+struct definizione* ProssimaParola0(struct definizione *prec) {
 	struct	definizione *p, *prossima;
 	int		ctrprec = INT_MAX, lunprec = 0, ctrn;
 
@@ -44,6 +57,64 @@ struct definizione* ProssimaParola(struct definizione *prec) {
 			lunprec		=	p->lunghezza;
 		}
 
+	}
+
+	if (prossima != NULL)
+		AccodaLista(prossima);
+
+	ctrdef++;
+	return prossima;
+}
+/*----------------------------------------------------------------*/
+/*           Ritorna l'indirizzo della parola da cercare          */
+/*           e costruisce una lista delle parole cercate          */
+/*----------------------------------------------------------------*/
+struct definizione* ProssimaParola1(struct definizione *prec) {
+	struct	definizione *p, *prossima;
+	int		ctrprec = INT_MAX, lunprec = 0, ctrn;
+	int		rigaprec = INT_MAX, colonnaprec = INT_MAX;
+
+
+	if (ultima->succ != NULL){
+		ultima		= ultima->succ;
+		prossima	= ultima->def;
+		ctrdef++;
+		return prossima;
+	}
+
+	p			= inizio;
+	prossima	= NULL;
+
+	for (p = inizio; p != NULL; p=p->succ) {
+
+		if (p->trovata)
+			continue;
+		if (piene(p) == 0)
+			continue;
+
+		if (SiIncrociano(p, prec)) {
+			switch (p->OrVe) {
+				case 'V': 
+					if (p->colonna <  colonnaprec) {
+						prossima = p;
+						colonnaprec = prossima->colonna;
+					}
+					continue;
+				case 'O': 
+					if (p->riga < rigaprec){
+						prossima = p;
+						rigaprec = prossima->riga;
+					}
+					continue;
+			}
+			continue;
+		}
+		ctrn = CercaParole(p, TRUE);
+		if (ctrn < ctrprec){
+			prossima	=	p;
+			ctrprec 	=	ctrn;
+			lunprec		=	p->lunghezza;
+		}
 	}
 
 	if (prossima != NULL)

@@ -5,8 +5,8 @@
 #include "cruciverba.h"
 #include "funzioni.h"
 
-const char *argp_program_bug_address = "someone@example.com";
-const char *argp_program_version = "version 1.3.2";
+const char *argp_program_bug_address = "angelo.meneghini@gmail.com";
+const char *argp_program_version = "version 1.3.3";
 struct arguments
 {
 	char *argz;
@@ -14,6 +14,7 @@ struct arguments
 };
 struct argp_option options[] = {
 		{ "trovaparola",	't',		"NUM",	0,	"Metodo di scelta delle parole da cercare"},
+		{ "prossimaparola",	'p',		"NUM",	0,	"Algoritmo per la ricerca della parola successiva"},
 		{ "livello",		'l',		"NUM",	0,	"Livello massimo di diffficoltà delle parole"},
 		{ "file-input",		'f',	"FILENAME", 0,	"Nome file da cui caricare lo schema"},
 		{ "not-random",		'n',			0,  0,	"Ricerca parole in ordine alfabetico"},
@@ -33,6 +34,14 @@ static int parse_opt	(int key, char *arg
 				algoritmo = atoi(arg);
 				if ((algoritmo < 1) || (algoritmo > 2)){
 					printf("l'algoritmo deve essere compreso fra 1 e 2.\n");
+					return 1;
+				}	
+				break;
+				}
+		case 'p':{
+				sceltaprox= atoi(arg);
+				if ((sceltaprox < 0) || (sceltaprox > 1)){
+					printf("l'algoritmo di ricerca deve esser compreso fra 0 e 1.\n");
 					return 1;
 				}	
 				break;
@@ -82,6 +91,8 @@ int LeggiSchema(char *NomeFile) {
 	fread(schema, sizeof(schema), 1, fp);
 
 	fclose(fp);
+
+	NomeSchema = NomeFile;
 
 	return TRUE;
 }

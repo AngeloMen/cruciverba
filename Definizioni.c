@@ -158,7 +158,7 @@ int CalcolaLungVert(int r, int c) {
 //extern int maxr, maxc; /* dimensioni dello schema  */
 
 void DisegnaSchema() {
-	int r, c;
+	int r, c, riga;
 	void DisegnaRiga(void);
 
 	printf("\033[2J");									/* Pulisce lo schermo      */
@@ -183,8 +183,17 @@ void DisegnaSchema() {
 
 		DisegnaRiga();									/* riga di separazione     */
 	}
-	gotoxy(1, maxr*2+4);
-	printf("%s", argp_program_version);
+	riga = maxr*2+4;
+	gotoxy(1, riga);
+	if (NomeSchema != NULL)
+		printf("%s.\tSchema: %s", argp_program_version, NomeSchema);
+	else
+		printf("%s.\tSchema[%i:%i]", argp_program_version, maxr, maxc);
+	riga++;
+	gotoxy(1, riga);
+	printf("TrovaParola=%d, Sceltaprox=%d, Difficoltà=%d, Alfabetico=%s, Non valide=%s"
+			,algoritmo, sceltaprox, difficolta, nonRandom?"Si":"No", nonValide?"Sì":"No");
+
 	printf("\n\n\n");
 	return;
 }

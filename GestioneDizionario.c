@@ -92,7 +92,8 @@ void AggiornaParola(struct definizione *pDef){
 		}	
 	}
 	if (usare != INT_MAX) {
-		sprintf(update,"UPDATE vocabolo SET usare = %i", usare);
+		strcpy(update,"");
+		sprintf(update,"UPDATE vocabolo SET valido = %i ", usare);
 		strcat(update, where_part);
 		if ((Sql_Return = mysql_query(&mysql, update))) {
 			printf("errore update valido: %d", Sql_Return);;
@@ -100,4 +101,34 @@ void AggiornaParola(struct definizione *pDef){
 		}
 	}
 	return;
+}
+/*-------------------------------------------------
+ * Aggiorna livello di difficoltà e flag usare
+ -------------------------------------------------*/
+void AggiornaCtrUso(){
+	char where_part[100];
+	char update[40] = "UPDATE vocabolo set ctruso = ctruso + 1";
+	char *parola;
+	int	Sql_Return;
+	struct definizione *pDef;
+	char aggiorna[300];
+
+
+	if (!Db_Aperto) 
+		ApriDatabase();
+
+	for (pDef = inizio; pDef != NULL; pDef=pDef->succ){
+		parola = estraiparola(pDef);
+		sprintf(where_part, " WHERE lung = %i and parola = '%s'",pDef->lunghezza, parola);
+		strcpy(aggiorna,"");
+		strcat(aggiorna,update);
+		strcat(aggiorna,where_part);
+		if ((Sql_Return = mysql_query(&mysql, aggiorna))){
+			printf("errore update ctruso: %d", Sql_Return);;
+		exit(1);
+		}
+	}
+
+	mysql_commit(&mysql);
+	ChiudiDatabase();
 }

@@ -42,17 +42,20 @@ struct definizione *fine	= NULL;			// Indirizzo dell'ultima definizione
 /*-----------------------------------------------------------------------*/
 int scrivereparola = TRUE;  // Scrivo o meno le parole a video?
 int algoritmo = 1;			// Metodo di ricerca della prossima parola da trovare
-int difficolta = 5;			// Massimo livello di difficoltà per le parole da usare
+int sceltaprox = 1;			// Metodo di ricerca della prossima parola da trovare
+int difficolta = 2;			// Massimo livello di difficoltà per le parole da usare
 int LettoSchema;            // Lo schema è stato letto da file?
 int minl;                   // La lunghezza minima della parola da cercare
 int nonRandom = FALSE;		// Ricerca in ordine alfabetico o casuale
 int nonValide;				// Includi anche le parole marcate nel db come non valide
+char *NomeSchema;
 
 /*-----------------------------------------------------------------------*/
 /*                     Programma principale                              */
 /*-----------------------------------------------------------------------*/
 int main(int argc, char *argv[]) {
 
+	strcat(NomeSchema, "");
     AnalisiParametri(argc, argv);
 
 	if (!(LettoSchema)) {						// Se non caricato uno schema precedente
@@ -89,6 +92,7 @@ int main(int argc, char *argv[]) {
 
 	if (RiempiSchema()) {						// Ciclo di riempimento dello schema;
 		DisegnaSchema();
+		AggiornaCtrUso();
 	} else {
 		puts("\033[24;1HSchema irrisolto\033[K");
 	}

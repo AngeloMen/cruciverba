@@ -8,6 +8,7 @@
 #define DEBUG FALSE
 #define NERA 'X'
 #define	RIGA 45											// Posizione della riga delle richieste
+#define ALGORITMO 1
 // Per accesso al db		
 #define DBSERVER "dbserver"
 #define DBUSER "guest"
@@ -21,9 +22,10 @@
 /*                     Variabili globali                                 */
 /*-----------------------------------------------------------------------*/
 
-extern int algoritmo;
+extern int algoritmo;			// 
+extern int sceltaprox;
 extern int difficolta;			// Massimo livello di difficoltà per le parole da usare
-extern int nonRandom;		// Mescolare le parole per non averle in ordine alfabetico
+extern int nonRandom;			// Mescolare le parole per non averle in ordine alfabetico
 extern int nonValide;			// Mescolare le parole per non averle in ordine alfabetico
 extern char schema[MaxR][MaxC];	/* Matrice che contiene lo schema       */
 extern int ctrsch[MaxR][MaxC];	/* Serve a controllare la cancellazione */
@@ -87,4 +89,5 @@ extern struct listaricerca *prima;
 extern struct listaricerca *ultima;
 extern const char *argp_program_version;
 extern int Db_Aperto;
+extern char *NomeSchema;
 #endif
