@@ -198,7 +198,7 @@ char* estraiparola(struct definizione *p) {
 	return risult;
 }
 /*-----------------------------------------------------------*/
-/* stampa la parola attiva della definizione                 */
+/* stampa la parola della soluzione                          */
 /*															 */
 /*-----------------------------------------------------------*/
 void stampasoluzione(struct definizione *p) {
@@ -366,9 +366,9 @@ float rapporto(struct definizione *p) {
 	return vuote / piene;
 
 }
-/*-----------------------------------------------*/
-/* Calcola il rapporto tra caselle vuote e piene */
-/*-----------------------------------------------*/
+/*-----------------------------------------------------------*/
+/* Vede se tutti gli incroci della parola sono stati trovati */
+/*-----------------------------------------------------------*/
 int IncrociCompleti(struct definizione *p) {
 	int incR = 0, incC = 0;
 	int r, c;

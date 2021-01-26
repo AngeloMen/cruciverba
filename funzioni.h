@@ -28,6 +28,9 @@ struct	definizione* ParolaPrecedente(void);			//
 struct	definizione* ProssimaParola(struct definizione*);				//
 struct	definizione* ProssimaParola0(struct definizione*);				//
 struct	definizione* ProssimaParola1(struct definizione*);				//
+struct	definizione* ProssimaParola2(struct definizione*);				//
+struct	definizione* ProssimaDaIncrocio(struct definizione*);
+struct	definizione* ProssimaDaSchema(struct definizione *prec);
 int		TrovaParola(struct definizione*);				//
 int		TrovaParola_1(struct definizione*);				//
 int		TrovaParola_2(struct definizione*);				//

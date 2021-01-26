@@ -93,6 +93,7 @@ int main(int argc, char *argv[]) {
 	if (RiempiSchema()) {						// Ciclo di riempimento dello schema;
 		DisegnaSchema();
 		AggiornaCtrUso();
+		fprintf(stdout, "\aBeep!\n" );
 	} else {
 		puts("\033[24;1HSchema irrisolto\033[K");
 	}

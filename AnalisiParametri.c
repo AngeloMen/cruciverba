@@ -6,7 +6,7 @@
 #include "funzioni.h"
 
 const char *argp_program_bug_address = "angelo.meneghini@gmail.com";
-const char *argp_program_version = "version 1.3.3";
+const char *argp_program_version = "version 1.4.0";
 struct arguments
 {
 	char *argz;
@@ -40,8 +40,8 @@ static int parse_opt	(int key, char *arg
 				}
 		case 'p':{
 				sceltaprox= atoi(arg);
-				if ((sceltaprox < 0) || (sceltaprox > 1)){
-					printf("l'algoritmo di ricerca deve esser compreso fra 0 e 1.\n");
+				if ((sceltaprox < 0) || (sceltaprox > 2)){
+					printf("l'algoritmo di ricerca deve esser compreso fra 0 e 2.\n");
 					return 1;
 				}	
 				break;
