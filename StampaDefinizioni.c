@@ -118,7 +118,9 @@ void stampastatistiche(void) {
 	printf	("Totale ricerche di parole per inserimento:\t%6i\n",	ctrSearchF);
 	printf	("Totale ricerche di parole per blocco:\t\t%6i\n",		ctrSearchV);
 	printf	("Totale ricerche di parole :\t\t\t%6i\n\n",			ctrSearchT);
-	printf	("Totale cancellazioni di parole:\t\t\t%6i\n",			ctrCan);	
+	printf	("Totale cancellazioni di parole:\t\t\t%6i\n\n",		ctrCan);	
+	printf	("Totale prossime da incrocio:   \t\t\t%6i\n",			CtrProInc);	
+	printf	("Totale prossime da schema:     \t\t\t%6i\n",			CtrProSch);	
 	for (int i = 0; i < 54; putchar('='), i++);
 	putchar('\n');
 	putchar('\n');

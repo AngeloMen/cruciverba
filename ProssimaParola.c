@@ -162,12 +162,14 @@ struct definizione* ProssimaParola2(struct definizione *prec) {
 	if (prossima != NULL){
 		AccodaLista(prossima);
 		ctrdef++;
+		CtrProInc++;
 		return prossima;
 	}
 
 	prossima = ProssimaDaSchema(prec);
 	if (prossima != NULL){
 		AccodaLista(prossima);
+		CtrProSch++;
 		ctrdef++;
 	}
 

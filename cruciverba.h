@@ -52,6 +52,8 @@ extern int ctrdef;			    // Per stampa parola in ricerca
 extern int totaleOrizzontali;
 extern int totaleVerticali;
 extern int totaleDefinizioni;
+extern int CtrProInc;
+extern int CtrProSch;
 extern int ctrOri;			    // 
 extern int ctrVer;			    // 
 extern int ctrTot;			    // 
