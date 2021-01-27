@@ -36,6 +36,7 @@ int CtrProSch			= 0;
 int ctrSearchF		    = 0; 
 int ctrSearchV		    = 0; 
 int ctrSearchT		    = 0; 
+int curdef				= 1;
 
 struct definizione *inizio	= NULL;			// Indirizzo della prima definizione
 struct definizione *fine	= NULL;			// Indirizzo dell'ultima definizione

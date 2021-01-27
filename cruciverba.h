@@ -45,6 +45,7 @@ extern int minl;                // Lunghezza minima parole da cercare
 extern int difficolta;			// Massimo livello di difficoltà per le parole da usare
 extern int contatore;			// Contatore delle ricerche
 extern int ctrdef;			    // Per stampa parola in ricerca
+extern int curdef;			    // Per stampa parola in ricerca
 /*
  * Contatori per statistiche
  *

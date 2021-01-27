@@ -293,9 +293,10 @@ void stamparicerca(struct definizione *p, int cancella) {
 		printf("%2i %c %*s %*s %.*s", p->numero, p->OrVe, 8, coord
 									,10, parola,  p->lunghezza, j);
 	}
+	riga = maxr*2+6;
+	gotoxy(1, riga);
+	printf("(%d/%d)", curdef, totaleDefinizioni);
 
-//	sleep(1);
-	
 	return;
 }
 /*-----------------------------------------------------------*/
@@ -385,6 +386,8 @@ int IncrociCompleti(struct definizione *p) {
 		if (casella[r][c].vert != NULL)
 			if (!(casella[r][c].vert->trovata))
 				return FALSE;
+		r+=incR;
+		c+=incC;
 	}
 	return TRUE;
 }
