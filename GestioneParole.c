@@ -114,7 +114,7 @@ int SiIncrociano(struct definizione *p, struct definizione *pd) {
 /* controlla se le due definizioni ricevute in input         */
 /* si incrociano                                             */
 /*-----------------------------------------------------------*/
-int SiIncrociano_old(struct definizione *p, struct definizione *pd) {
+/* int SiIncrociano_old(struct definizione *p, struct definizione *pd) {
 
 	int	colonna
 	   ,colonna_iniziale
@@ -154,7 +154,7 @@ int SiIncrociano_old(struct definizione *p, struct definizione *pd) {
 		return TRUE;
 	}
 	 return FALSE;
-}
+ }*/
 
 /*-----------------------------------------------------------*/
 /* stampa la parola attiva della definizione                 */
@@ -278,6 +278,7 @@ void stamparicerca(struct definizione *p, int cancella) {
 	int riga, colonna, righe;
 	char parola[40];
 	char coord[40];
+	static int MaxDef = 0;
 
 	righe	= maxr * 2;
 	riga	= ((ctrdef-1)%(righe))+2;
@@ -295,7 +296,8 @@ void stamparicerca(struct definizione *p, int cancella) {
 	}
 	riga = maxr*2+6;
 	gotoxy(1, riga);
-	printf("(%d/%d)", curdef, totaleDefinizioni);
+	if (curdef > MaxDef) MaxDef = curdef;
+	printf("(%d/%d)-%d                               ", curdef, totaleDefinizioni, MaxDef);
 
 	return;
 }

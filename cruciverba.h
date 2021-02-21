@@ -46,6 +46,15 @@ extern int difficolta;			// Massimo livello di difficoltà per le parole da usar
 extern int contatore;			// Contatore delle ricerche
 extern int ctrdef;			    // Per stampa parola in ricerca
 extern int curdef;			    // Per stampa parola in ricerca
+extern int selvuo;			    // Contatore select vuote
+extern int ctrvuoinc;
+extern int ctrvuosch;
+extern int ctrvuobl;
+extern int selvuo1;
+extern int selvuo2;
+extern int selvuo3;
+extern int selvuo4;
+extern int selvuo5;
 /*
  * Contatori per statistiche
  *
@@ -76,6 +85,7 @@ extern struct definizione {
 	char *parole;                  // Puntatore alla lista delle parole ok
 	struct definizione *prec;        // Puntatore alla precedente definizione
 	struct definizione *succ;        // Puntatore alla successiva definizione
+	struct definizione *incr[Maxl];
 } definizione;
 
 extern struct definizione *inizio; // Indirizzo della prima definizione

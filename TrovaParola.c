@@ -161,7 +161,7 @@ int CercaParole(struct definizione *p, int SoloCtr) {
 	unsigned int ctr;
 	char *pc;
 	int i, r, c;
-	int ir, ic;
+	int ir, ic, vuota;
 
 	MYSQL_RES *result;
 	MYSQL_ROW riga;
@@ -180,8 +180,9 @@ int CercaParole(struct definizione *p, int SoloCtr) {
 	/*--------------------------*/
 	/*     Prepara la select    */
 	/*--------------------------*/
+	vuota = TRUE;
 	for (i = 0; i < p->lunghezza; ++i) {
-		(schema[r][c] == ' ') ? (parola[i] = '_') : (parola[i] = schema[r][c]);
+		(schema[r][c] == ' ') ? (parola[i] = '_') : (parola[i] = schema[r][c], vuota=FALSE);
 		c = c + ic;
 		r = r + ir;
 	}
@@ -201,6 +202,24 @@ int CercaParole(struct definizione *p, int SoloCtr) {
 	else
 		strcat(select, " order by RAND()");
 		
+	if (vuota) {
+		switch(SoloCtr)
+	   	{
+			case 0: selvuo++;
+					break;
+			case 1: selvuo1++;
+					break;
+			case 2: selvuo2++;
+					break;
+			case 3: selvuo3++;
+					break;
+			case 4: selvuo4++;
+					return 1;
+			case 5: selvuo5++;
+					return 1;
+		}	
+	}	
+
 
 	/*---------------------------------------------------------*/
 	/*  Esegue la select preparata                             */
@@ -278,7 +297,8 @@ int bloccante(struct definizione *p) {
 			for (int l = 0; l < p->lunghezza; l++){
 				if ((casella[riga][colonna].vert != NULL)) 
 				  if (!(casella[riga][colonna].vert->trovata))
-				    if ((CercaParole(casella[riga][colonna].vert, TRUE)) == 0) {
+				   if (piene(casella[riga][colonna].vert) != 0)
+				    if ((CercaParole(casella[riga][colonna].vert, 4)) == 0) {
 		                cancella_bloccanti(p, casella[riga][colonna].vert);
   	  		      	 	CancellaParola(p);
 			    		bloccante = TRUE;
@@ -292,7 +312,8 @@ int bloccante(struct definizione *p) {
 			for (int l = 0; l < p->lunghezza; l++){
 				if ((casella[riga][colonna].oriz != NULL)) 
 				  if (!(casella[riga][colonna].oriz->trovata))
-			       if ((CercaParole(casella[riga][colonna].oriz, TRUE)) == 0) {
+				   if (piene(casella[riga][colonna].oriz) != 0)
+			        if ((CercaParole(casella[riga][colonna].oriz, 5)) == 0) {
                        cancella_bloccanti(p, casella[riga][colonna].oriz);
   				 	   CancellaParola(p);
 					   bloccante = TRUE;

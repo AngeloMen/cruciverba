@@ -121,6 +121,15 @@ void stampastatistiche(void) {
 	printf	("Totale cancellazioni di parole:\t\t\t%6i\n\n",		ctrCan);	
 	printf	("Totale prossime da incrocio:   \t\t\t%6i\n",			CtrProInc);	
 	printf	("Totale prossime da schema:     \t\t\t%6i\n",			CtrProSch);	
+	printf	("Totale query con parola vuota: \t\t\t%6i\n",			selvuo);	
+	printf	("Totale vuote da schema       : \t\t\t%6i\n",			ctrvuosch);	
+	printf	("Totale vuote da incroci      : \t\t\t%6i\n",			ctrvuoinc);	
+	printf	("Totale vuote da bloccante    : \t\t\t%6i\n",			ctrvuobl);	
+	printf	("Totale vuote da 1            : \t\t\t%6i\n",			selvuo1);	
+	printf	("Totale vuote da 2            : \t\t\t%6i\n",			selvuo2);	
+	printf	("Totale vuote da 3            : \t\t\t%6i\n",			selvuo3);	
+	printf	("Totale vuote da 4            : \t\t\t%6i\n",			selvuo4);	
+	printf	("Totale vuote da 5            : \t\t\t%6i\n",			selvuo5);	
 	for (int i = 0; i < 54; putchar('='), i++);
 	putchar('\n');
 	putchar('\n');

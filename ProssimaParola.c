@@ -49,14 +49,14 @@ struct definizione* ProssimaParola0(struct definizione *prec) {
 			continue;
 
 		if (SiIncrociano(p, prec)) {
-			ctrn		=	CercaParole(p, TRUE);
+			ctrn		=	CercaParole(p, 1);
 			prossima	=	p;
 			ctrprec 	=	ctrn;
 			lunprec		=	p->lunghezza;
 			break;
 		}
 			
-		ctrn = CercaParole(p, TRUE);
+		ctrn = CercaParole(p, 2);
 		if (ctrn < ctrprec){
 			prossima	=	p;
 			ctrprec 	=	ctrn;
@@ -129,7 +129,7 @@ struct definizione* ProssimaParola1(struct definizione *prec) {
 			}
 			continue;
 		}
-		ctrn = CercaParole(p, TRUE);
+		ctrn = CercaParole(p, 3);
 		if (ctrn < ctrprec){
 			prossima	=	p;
 			ctrprec 	=	ctrn;
@@ -193,8 +193,8 @@ struct definizione* ProssimaDaIncrocio(struct definizione *prec) {
 
 	for (int i=0; i < prec->lunghezza; i++) {
 		if (casella[riga][colonna].vert != NULL){
-			p = casella[riga][colonna].vert;
 			if (!(casella[riga][colonna].vert->trovata)){
+				p = casella[riga][colonna].vert;
 				if (p->colonna <  colonnaprec) {
 					prossima	= p;
 					colonnaprec	= prossima->colonna;
@@ -231,6 +231,9 @@ struct definizione* ProssimaDaIncrocio(struct definizione *prec) {
 	colonna+=ic;
 	}
 
+	if (prossima != NULL)
+		if (piene(prossima) == 0)
+		   ctrvuoinc++;
 	return prossima;
 }
 /*-----------------------------------------------*/
@@ -290,6 +293,9 @@ struct definizione* ProssimaDaSchema(struct definizione *prec) {
 			}
 			continue;
 	}
+	if (prossima != NULL)
+		if (piene(prossima) == 0)
+		   ctrvuosch++;
 	return prossima;
 }
 /*-----------------------------------------------*/

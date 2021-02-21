@@ -37,6 +37,15 @@ int ctrSearchF		    = 0;
 int ctrSearchV		    = 0; 
 int ctrSearchT		    = 0; 
 int curdef				= 1;
+int selvuo				= 0;
+int ctrvuoinc			= 0;
+int ctrvuosch			= 0;
+int ctrvuobl			= 0;
+int selvuo1				= 0;
+int selvuo2				= 0;
+int selvuo3				= 0;
+int selvuo4				= 0;
+int selvuo5				= 0;
 
 struct definizione *inizio	= NULL;			// Indirizzo della prima definizione
 struct definizione *fine	= NULL;			// Indirizzo dell'ultima definizione
