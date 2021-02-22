@@ -172,23 +172,22 @@ int CercaParole(struct definizione *p, int SoloCtr) {
 	else 
 		ctrSearchF++;
 
-	r = p->riga;
-	c = p->colonna;
+	// r = p->riga;
+	// c = p->colonna;
 
-	(p->OrVe == 'O') ? (ic = 1, ir = 0) : (ic = 0, ir = 1);
+	// (p->OrVe == 'O') ? (ic = 1, ir = 0) : (ic = 0, ir = 1);
+
+	// for (i = 0; i < p->lunghezza; ++i) {
+	// 	(schema[r][c] == ' ') ? (parola[i] = '_') : (parola[i] = schema[r][c], vuota=FALSE);
+	// 	c = c + ic;
+	// 	r = r + ir;
+	// }
+	// parola[i]= '\0';
+	vuota = PrepWord(p, parola);
 
 	/*--------------------------*/
 	/*     Prepara la select    */
 	/*--------------------------*/
-	vuota = TRUE;
-	for (i = 0; i < p->lunghezza; ++i) {
-		(schema[r][c] == ' ') ? (parola[i] = '_') : (parola[i] = schema[r][c], vuota=FALSE);
-		c = c + ic;
-		r = r + ir;
-	}
-
-	parola[i] = '\0';
-
 	sprintf(select, "SELECT parola "
 			"FROM vocabolo "
 			"WHERE lung=%i "
@@ -278,6 +277,25 @@ int CercaParole(struct definizione *p, int SoloCtr) {
 	printf("Parole trovate: %s.\n", p->parole);
 	#endif
 	return 0;
+}
+int PrepWord(struct definizione *p, char *parola){
+	int r, c, ic, ir, vuota, i;
+
+	r	= p->riga;
+	c	= p->colonna;
+
+	(p->OrVe == 'O') ? (ic = 1, ir = 0) : (ic = 0, ir = 1);
+
+	vuota = TRUE;
+	for (i = 0; i < p->lunghezza; ++i) {
+		(schema[r][c] == ' ') ? (parola[i] = '_') : (parola[i] = schema[r][c], vuota=FALSE);
+		c = c + ic;
+		r = r + ir;
+	}
+
+	parola[p->lunghezza] = '\0';
+	return vuota;
+
 }
 /*-----------------------------------------------------------*/
 /* Verifica che la parola com'è collocata non blocchi la ri- */
